@@ -76,7 +76,7 @@ body::before{
 .hero-etymology{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:rgba(165,180,252,0.65);margin-bottom:48px;display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap}
 .etym-part{display:flex;align-items:center;gap:6px}
 .etym-word{color:rgba(244,243,255,0.45)}
-.etym-meaning{color:rgba(208,96,176,.75)}
+.etym-meaning{color:rgba(99,102,241,.8)}
 .etym-sep{color:rgba(99,102,241,.5)}
 .scroll-hint{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(99,102,241,.6);display:flex;flex-direction:column;align-items:center;gap:8px;animation:float 2.5s ease-in-out infinite}
 .scroll-hint svg{opacity:.6}
@@ -124,7 +124,7 @@ body::before{
 .force-signal{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--magenta-mid);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.15);padding:3px 10px;border-radius:3px;margin-top:8px}
 .manifesto{padding:120px 48px;text-align:center;background:linear-gradient(180deg,transparent,rgba(99,102,241,.04),transparent);position:relative;z-index:1}
 .manifesto-inner{max-width:760px;margin:0 auto}
-.m-line{font-size:clamp(1.2rem,2.8vw,2rem);font-weight:700;color:rgba(238,216,232,.35);line-height:1.5;transition:color .4s;padding:6px 0;cursor:default}
+.m-line{font-size:clamp(1.2rem,2.8vw,2rem);font-weight:700;color:rgba(165,180,252,.3);line-height:1.5;transition:color .4s;padding:6px 0;cursor:default}
 .m-line.lit{color:var(--text)}
 .m-line .gold{color:var(--gold)}
 .m-line .mag{color:var(--magenta-mid)}
@@ -443,7 +443,7 @@ body::before{
       var px=p.x*W,py=p.y*H,twinkle=p.alpha*(0.6+Math.sin(t*2+p.phase)*.4);
       var dx=px-mouse.x,dy=py-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
       if(dist<120)twinkle=Math.min(1,twinkle+(1-dist/120)*.5);
-      ctx.beginPath();ctx.arc(px,py,p.size,0,Math.PI*2);ctx.fillStyle='rgba(208,96,176,'+twinkle+')';ctx.fill();
+      ctx.beginPath();ctx.arc(px,py,p.size,0,Math.PI*2);ctx.fillStyle='rgba(99,102,241,'+twinkle+')';ctx.fill();
     });
     for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=(particles[i].x-particles[j].x)*W,dy=(particles[i].y-particles[j].y)*H,d=Math.sqrt(dx*dx+dy*dy);if(d<80){ctx.beginPath();ctx.moveTo(particles[i].x*W,particles[i].y*H);ctx.lineTo(particles[j].x*W,particles[j].y*H);ctx.strokeStyle='rgba(99,102,241,'+(0.06*(1-d/80))+')';ctx.lineWidth=.5;ctx.stroke();}}}
     requestAnimationFrame(draw);
