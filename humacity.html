@@ -39,7 +39,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── TOP BAR ── */
+    /* TOP BAR */
     .topbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -53,392 +53,118 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-
-    .topbar-wordmark {
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .topbar-tag {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    .topbar-virorah {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .topbar-wordmark { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+    .topbar-tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
+    .topbar-virorah { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
     .topbar-virorah:hover { color: var(--muted); }
 
-    /* ── HERO ── */
+    /* HERO — split layout */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
+      gap: 0;
       position: relative;
       overflow: hidden;
     }
-
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 30% 60%, rgba(99,102,241,0.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse 50% 70% at 70% 50%, rgba(99,102,241,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
-
-    .hero-eyebrow {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 28px;
-    }
-
+    .hero-content { position: relative; z-index: 2; }
+    .hero-eyebrow { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
     .hero-statement {
       font-family: var(--serif);
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
       font-weight: 400;
       line-height: 1.12;
       letter-spacing: -0.02em;
-      max-width: 900px;
       color: var(--text);
     }
+    .hero-statement em { font-style: italic; color: var(--muted); }
+    .hero-sub { margin-top: 32px; font-size: 1rem; color: var(--text-dim); font-weight: 300; max-width: 420px; line-height: 1.75; }
+    .hero-scroll { margin-top: 48px; display: flex; align-items: center; gap: 12px; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
+    .hero-scroll-line { width: 40px; height: 1px; background: rgba(99,102,241,0.3); }
 
-    .hero-statement em {
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .hero-sub {
-      margin-top: 32px;
-      font-size: 1rem;
-      color: var(--text-dim);
-      font-weight: 300;
-      max-width: 480px;
-      line-height: 1.75;
-    }
-
-    .hero-scroll {
-      margin-top: 48px;
+    /* ORB */
+    .hero-orb {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-dim);
+      justify-content: center;
+    }
+    #orbCanvas {
+      width: min(520px, 90%);
+      height: min(520px, 90%);
+      display: block;
     }
 
-    .hero-scroll-line {
-      width: 40px;
-      height: 1px;
-      background: rgba(99,102,241,0.3);
-    }
+    /* SECTIONS */
+    .section-full { padding: 96px 48px; border-top: 1px solid var(--border); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .section-heading { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.02em; color: var(--text); margin-bottom: 24px; }
+    .section-body { font-size: 1rem; color: var(--text-dim); font-weight: 300; line-height: 1.8; max-width: 640px; }
 
-    /* ── SECTION BASE ── */
-    .section {
-      padding: 96px 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-full {
-      padding: 96px 48px;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .section-heading {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 24px;
-    }
-
-    .section-body {
-      font-size: 1rem;
-      color: var(--text-dim);
-      font-weight: 300;
-      line-height: 1.8;
-      max-width: 640px;
-    }
-
-    /* ── MANIFESTO BLOCK ── */
-    .manifesto {
-      border-top: 1px solid var(--border);
-    }
-
+    /* MANIFESTO */
     .manifesto-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 96px 48px;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 64px;
-      align-items: start;
+      max-width: 1100px; margin: 0 auto; padding: 96px 48px;
+      display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start;
     }
+    .manifesto-label { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); padding-top: 6px; }
+    .manifesto-text { font-size: 1.15rem; font-weight: 300; color: rgba(244,243,255,0.75); line-height: 1.85; }
+    .manifesto-text strong { font-weight: 500; color: var(--text); }
 
-    .manifesto-label {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      padding-top: 6px;
-    }
-
-    .manifesto-text {
-      font-size: 1.15rem;
-      font-weight: 300;
-      color: rgba(244,243,255,0.75);
-      line-height: 1.85;
-    }
-
-    .manifesto-text strong {
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    /* ── HUMANCE GRID ── */
-    .humance {
-      border-top: 1px solid var(--border);
-      background: var(--bg2);
-    }
-
-    .humance-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 96px 48px;
-    }
-
-    .humance-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      margin-top: 56px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .humance-card {
-      padding: 40px;
-      background: var(--bg2);
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.3s;
-    }
-
+    /* HUMANCE */
+    .humance { border-top: 1px solid var(--border); background: var(--bg2); }
+    .humance-inner { max-width: 1100px; margin: 0 auto; padding: 96px 48px; }
+    .humance-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; margin-top: 56px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .humance-card { padding: 40px; background: var(--bg2); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.3s; }
     .humance-card:nth-child(2n) { border-right: none; }
-    .humance-card:nth-child(3),
-    .humance-card:nth-child(4) { border-bottom: none; }
-
+    .humance-card:nth-child(3), .humance-card:nth-child(4) { border-bottom: none; }
     .humance-card:hover { background: var(--bg3); }
+    .humance-num { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 20px; opacity: 0.7; }
+    .humance-name { font-family: var(--serif); font-size: 1.4rem; font-weight: 500; color: var(--text); margin-bottom: 16px; letter-spacing: -0.01em; }
+    .humance-name span { display: block; font-size: 0.7rem; font-family: var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 400; margin-bottom: 8px; }
+    .humance-body { font-size: 0.9rem; color: var(--text-dim); line-height: 1.8; font-weight: 300; }
+    .humance-cost { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(99,102,241,0.6); }
 
-    .humance-num {
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      margin-bottom: 20px;
-      opacity: 0.7;
-    }
-
-    .humance-name {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
-    }
-
-    .humance-name span {
-      display: block;
-      font-size: 0.7rem;
-      font-family: var(--mono);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-
-    .humance-body {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .humance-cost {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(99,102,241,0.6);
-    }
-
-    /* ── PRODUCTS ── */
-    .products {
-      border-top: 1px solid var(--border);
-    }
-
-    .products-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 96px 48px;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 56px;
-    }
-
-    .prod-link {
-      display: block;
-      padding: 32px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    }
-
-    .prod-link:hover {
-      border-color: rgba(99,102,241,0.4);
-      background: var(--bg3);
-      transform: translateY(-3px);
-    }
-
-    .prod-link-tag {
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .prod-link-name {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-
-    .prod-link-desc {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    .prod-link-arrow {
-      display: inline-block;
-      margin-top: 20px;
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: letter-spacing 0.2s;
-    }
-
+    /* PRODUCTS */
+    .products { border-top: 1px solid var(--border); }
+    .products-inner { max-width: 1100px; margin: 0 auto; padding: 96px 48px; }
+    .products-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .prod-link { display: block; padding: 32px; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.2s, background 0.2s, transform 0.2s; }
+    .prod-link:hover { border-color: rgba(99,102,241,0.4); background: var(--bg3); transform: translateY(-3px); }
+    .prod-link-tag { font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .prod-link-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .prod-link-desc { font-size: 0.82rem; color: var(--text-dim); line-height: 1.7; font-weight: 300; }
+    .prod-link-arrow { display: inline-block; margin-top: 20px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); transition: letter-spacing 0.2s; }
     .prod-link:hover .prod-link-arrow { letter-spacing: 0.22em; }
 
-    /* ── FOOTER ── */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-left {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    .footer-right {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-    }
-
-    .footer-right a {
-      color: rgba(165,180,252,0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    /* FOOTER */
+    .footer { border-top: 1px solid var(--border); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-left { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); }
+    .footer-right a { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(165,180,252,0.5); text-decoration: none; transition: color 0.2s; }
     .footer-right a:hover { color: var(--muted); }
 
-    /* ── REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── MOBILE ── */
+    /* MOBILE */
     @media (max-width: 768px) {
       .topbar { padding: 16px 24px; }
       .topbar-tag { display: none; }
-      .hero { padding: 0 24px 64px; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 40px; }
+      .hero-orb { order: -1; }
+      #orbCanvas { width: min(320px,90vw); height: min(320px,90vw); }
       .manifesto-inner { grid-template-columns: 1fr; gap: 24px; padding: 64px 24px; }
-      .section { padding: 64px 24px; }
       .section-full { padding: 64px 24px; }
       .humance-inner { padding: 64px 24px; }
       .humance-grid { grid-template-columns: 1fr; }
@@ -456,30 +182,30 @@
 </head>
 <body>
 
-  <!-- TOP BAR -->
   <nav class="topbar">
     <div class="topbar-wordmark">Humacity</div>
     <div class="topbar-tag">A Virorah Philosophy</div>
     <a href="https://virorah.com" class="topbar-virorah" target="_blank" rel="noopener">Virorah &rarr;</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="hero-eyebrow">The operating framework</div>
-    <h1 class="hero-statement">
-      Every people decision<br>has a <em>financial dimension.</em>
-    </h1>
-    <p class="hero-sub">
-      Humacity is the framework that names it, measures it, and puts it in a language the boardroom already speaks.
-    </p>
-    <div class="hero-scroll">
-      <div class="hero-scroll-line"></div>
-      The framework
+    <div class="hero-content">
+      <div class="hero-eyebrow">The operating framework</div>
+      <h1 class="hero-statement">
+        Every people decision<br>has a <em>financial dimension.</em>
+      </h1>
+      <p class="hero-sub">Humacity is the framework that names it, measures it, and puts it in a language the boardroom already speaks.</p>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        The framework
+      </div>
+    </div>
+    <div class="hero-orb">
+      <canvas id="orbCanvas"></canvas>
     </div>
   </section>
 
-  <!-- MANIFESTO -->
-  <div class="manifesto">
+  <div style="border-top:1px solid var(--border)">
     <div class="manifesto-inner reveal">
       <div class="manifesto-label">What this means</div>
       <div class="manifesto-text">
@@ -490,111 +216,199 @@
     </div>
   </div>
 
-  <!-- HUMANCE ASSET CLASSES -->
   <div class="humance">
     <div class="humance-inner">
       <div class="eyebrow reveal">The HUMANCE framework</div>
       <h2 class="section-heading reveal">Four asset classes.<br>One financial language.</h2>
       <div class="humance-grid">
-
         <div class="humance-card reveal">
           <div class="humance-num">Asset Class 01</div>
-          <div class="humance-name">
-            <span>Trust Capital</span>
-            The financial value of trust
-          </div>
+          <div class="humance-name"><span>Trust Capital</span>The financial value of trust</div>
           <div class="humance-body">Every organisation runs on trust — between leaders and teams, managers and their reports, the brand and the people it is trying to keep. When trust erodes, the financial event that follows is predictable: attrition spikes, productivity drops, recruitment spend climbs. Most organisations experience this and call it a culture problem. Humacity calls it what it is: a capital erosion event.</div>
           <div class="humance-cost">Cost when ignored: attrition, productivity loss, rehiring expense</div>
         </div>
-
         <div class="humance-card reveal">
           <div class="humance-num">Asset Class 02</div>
-          <div class="humance-name">
-            <span>Culture Yield</span>
-            The return on culture investment
-          </div>
+          <div class="humance-name"><span>Culture Yield</span>The return on culture investment</div>
           <div class="humance-body">Culture is not a feeling. It is a ratio. The return on every rupee invested in engagement, learning, and team cohesion against the cost of disengagement, absenteeism, and replacement. Most organisations measure culture through annual surveys and net promoter scores. Humacity measures it through its financial yield — what it returns, and what its absence costs.</div>
           <div class="humance-cost">Cost when ignored: disengagement, absenteeism, innovation gap</div>
         </div>
-
         <div class="humance-card reveal">
           <div class="humance-num">Asset Class 03</div>
-          <div class="humance-name">
-            <span>Signal Intelligence</span>
-            The quality of people data as an asset
-          </div>
+          <div class="humance-name"><span>Signal Intelligence</span>The quality of people data as an asset</div>
           <div class="humance-body">The quality of your people data is an asset. Its absence is a liability. Late attrition signals, incomplete performance data, and hiring decisions made without workforce analytics all carry a cost that does not appear on the HR budget — it appears on the P&amp;L. Humacity treats signal quality as a measurable asset class and its deterioration as a quantifiable financial risk.</div>
           <div class="humance-cost">Cost when ignored: late signals, poor decisions, compliance exposure</div>
         </div>
-
         <div class="humance-card reveal">
           <div class="humance-num">Asset Class 04</div>
-          <div class="humance-name">
-            <span>Belonging Premium</span>
-            The financial value of genuine inclusion
-          </div>
+          <div class="humance-name"><span>Belonging Premium</span>The financial value of genuine inclusion</div>
           <div class="humance-body">Genuine belonging generates a financial premium. Organisations where people can bring their full capability to work innovate faster, retain longer, and perform above sector benchmarks. Exclusion — whether by design or neglect — writes off a portion of that premium every quarter. Humacity names and measures what is lost, before the exit interview confirms it.</div>
           <div class="humance-cost">Cost when ignored: capability underuse, attrition, innovation loss</div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- PRODUCTS -->
   <div class="products">
     <div class="products-inner">
       <div class="eyebrow reveal">Built on this framework</div>
       <h2 class="section-heading reveal">Humacity powers<br>three products.</h2>
       <p class="section-body reveal" style="margin-bottom:0">Each product translates a different dimension of the framework into a working tool for the HR practitioner.</p>
-
       <div class="products-grid">
-
         <a href="https://pms.virorah.com/" target="_blank" rel="noopener" class="prod-link reveal">
           <div class="prod-link-tag">Performance Intelligence</div>
           <div class="prod-link-name">Virorah PMS</div>
           <div class="prod-link-desc">A performance management system built on Trust Capital and Signal Intelligence. Structured case history, manager accountability, and decision trails that hold up in any review.</div>
           <div class="prod-link-arrow">Open PMS &rarr;</div>
         </a>
-
         <a href="https://virorah.com" target="_blank" rel="noopener" class="prod-link reveal">
           <div class="prod-link-tag">HR Intelligence Platform</div>
           <div class="prod-link-name">Virorah Vantage</div>
           <div class="prod-link-desc">The intelligence layer for Indian HR professionals. MERIDIAN profiling, case analysis, and monthly Debrief — built on all four HUMANCE asset classes, calibrated for Indian employment law.</div>
           <div class="prod-link-arrow">Explore Vantage &rarr;</div>
         </a>
-
         <a href="https://revenue-fluent.virorah.com" target="_blank" rel="noopener" class="prod-link reveal">
           <div class="prod-link-tag">Financial Fluency</div>
           <div class="prod-link-name">Revenue Fluent</div>
           <div class="prod-link-desc">Five intelligence pillars that translate every people decision into financial language. The platform that teaches HR to own the boardroom conversation — built directly on the Humacity framework.</div>
           <div class="prod-link-arrow">Open platform &rarr;</div>
         </a>
-
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-left">Humacity &nbsp;&middot;&nbsp; A Virorah Philosophy &nbsp;&middot;&nbsp; &copy; 2026</div>
-    <div class="footer-right">
-      <a href="https://virorah.com" target="_blank" rel="noopener">virorah.com</a>
-    </div>
+    <div class="footer-right"><a href="https://virorah.com" target="_blank" rel="noopener">virorah.com</a></div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
+  // ORB — indigo palette migration
+  (function(){
+    var canvas = document.getElementById('orbCanvas');
+    function getSize(){ return Math.min(520, window.innerWidth * 0.9); }
+    var sz = getSize();
+    canvas.width = sz; canvas.height = sz;
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    var scene    = new THREE.Scene();
+    var camera   = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
+    camera.position.set(0, 0, 3.4);
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+    renderer.setSize(sz, sz);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+
+    // Core sphere — dark indigo base
+    var core = new THREE.Mesh(
+      new THREE.SphereGeometry(0.85, 80, 80),
+      new THREE.MeshStandardMaterial({ color: 0x0d0b1e, roughness: 0.2, metalness: 0.9, emissive: 0x1e1b4b, emissiveIntensity: 0.5 })
+    );
+    scene.add(core);
+
+    // Outer glow — indigo accent
+    scene.add(new THREE.Mesh(
+      new THREE.SphereGeometry(0.9, 32, 32),
+      new THREE.MeshBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.06, side: THREE.BackSide })
+    ));
+
+    // Wireframe — violet
+    var wire = new THREE.Mesh(
+      new THREE.SphereGeometry(0.87, 24, 24),
+      new THREE.MeshBasicMaterial({ color: 0x7c3aed, wireframe: true, transparent: true, opacity: 0.09 })
+    );
+    scene.add(wire);
+
+    // Rings
+    function makeRing(r, tube, color, opacity, rx, ry, rz) {
+      var m = new THREE.Mesh(
+        new THREE.TorusGeometry(r, tube, 8, 160),
+        new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: opacity })
+      );
+      m.rotation.set(rx, ry, rz);
+      scene.add(m);
+      return m;
+    }
+    var ring1 = makeRing(1.20, 0.005, 0x6366f1, 0.50, Math.PI * 0.28, 0, 0);
+    var ring2 = makeRing(1.38, 0.003, 0xa5b4fc, 0.25, Math.PI * 0.50, 0, Math.PI * 0.2);
+    var ring3 = makeRing(1.55, 0.002, 0x7c3aed, 0.15, Math.PI * 0.15, Math.PI * 0.1, 0);
+    var ring4 = makeRing(1.00, 0.004, 0xa5b4fc, 0.30, Math.PI * 0.70, 0, Math.PI * 0.4);
+
+    // Particles
+    function makeParticles(count, minR, maxR, color, size) {
+      var pos = new Float32Array(count * 3);
+      for (var i = 0; i < count; i++) {
+        var phi   = Math.acos(-1 + (2 * i) / count);
+        var theta = Math.sqrt(count * Math.PI) * phi + (Math.random() - 0.5) * 0.8;
+        var r     = minR + Math.random() * (maxR - minR);
+        pos[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+        pos[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+        pos[i*3+2] = r * Math.cos(phi);
+      }
+      var geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      var pts = new THREE.Points(geo, new THREE.PointsMaterial({ color: color, size: size, transparent: true, opacity: 0.7, sizeAttenuation: true }));
+      scene.add(pts);
+      return pts;
+    }
+    var cloud1 = makeParticles(600, 1.1, 1.9, 0x7c3aed, 0.022);
+    var cloud2 = makeParticles(200, 0.92, 1.05, 0xa5b4fc, 0.035);
+    var cloud3 = makeParticles(80,  2.0,  2.8,  0x6366f1, 0.015);
+
+    // Lights — indigo palette
+    scene.add(new THREE.AmbientLight(0x050410, 4));
+    var mLight = new THREE.PointLight(0x6366f1, 4, 10);   mLight.position.set(2.5, 2, 2);    scene.add(mLight);
+    var gLight = new THREE.PointLight(0xa5b4fc, 2, 10);   gLight.position.set(-2, -1.5, 1.5); scene.add(gLight);
+    var bLight = new THREE.PointLight(0x4f46e5, 1.5, 8);  bLight.position.set(0, -2.5, -1);   scene.add(bLight);
+    var fLight = new THREE.PointLight(0xc4b5fd, 1.2, 6);  fLight.position.set(-1.5, 1.5, 2);  scene.add(fLight);
+
+    // Mouse tracking
+    var mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', function(e) {
+      mouseX = (e.clientX / window.innerWidth  - 0.5) * 1.2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 1.2;
+    });
+
+    // Animate
+    var t = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      t += 0.004;
+      core.rotation.y = t * 0.25;  core.rotation.x = Math.sin(t * 0.15) * 0.08;
+      wire.rotation.y = t * 0.40;  wire.rotation.x = -t * 0.15;
+      ring1.rotation.z = t * 0.35;
+      ring2.rotation.y = t * 0.28; ring2.rotation.x += 0.002;
+      ring3.rotation.z = -t * 0.2; ring3.rotation.y = t * 0.15;
+      ring4.rotation.x = t * 0.30; ring4.rotation.z = -t * 0.18;
+      cloud1.rotation.y = t * 0.12; cloud1.rotation.x = Math.sin(t * 0.08) * 0.04;
+      cloud2.rotation.y = -t * 0.18; cloud2.rotation.z = t * 0.06;
+      cloud3.rotation.y = t * 0.06;
+      var breath = 1 + Math.sin(t * 0.7) * 0.018;
+      core.scale.setScalar(breath); wire.scale.setScalar(breath * 1.01);
+      scene.rotation.x += (mouseY * 0.6 - scene.rotation.x) * 0.03;
+      scene.rotation.y += (mouseX * 0.6 - scene.rotation.y) * 0.03;
+      mLight.intensity = 3.5 + Math.sin(t * 1.1) * 0.8;
+      gLight.intensity = 1.8 + Math.cos(t * 0.9) * 0.5;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', function() {
+      var s = getSize();
+      canvas.style.width  = s + 'px';
+      canvas.style.height = s + 'px';
+      renderer.setSize(s, s);
+    });
+  })();
+
+  // Scroll reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
   </script>
 
 </body>
