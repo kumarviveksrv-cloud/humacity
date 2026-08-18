@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humacity — Every people decision has a financial dimension.</title>
+  <meta name="description" content="Humacity is the operating framework that holds every people decision has a financial dimension. The philosophy behind Virorah's products.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #050410;
+      --bg2:      #0d0b1e;
+      --bg3:      #11102a;
+      --accent:   #6366f1;
+      --violet:   #7c3aed;
+      --muted:    #a5b4fc;
+      --lavender: #c4b5fd;
+      --text:     #f4f3ff;
+      --text-dim: rgba(244,243,255,0.45);
+      --border:   rgba(99,102,241,0.15);
+      --serif:    'Bricolage Grotesque', sans-serif;
+      --body:     'Plus Jakarta Sans', sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(5,4,16,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar-wordmark {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .topbar-tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .topbar-virorah {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .topbar-virorah:hover { color: var(--muted); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 30% 60%, rgba(99,102,241,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero-statement {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      max-width: 900px;
+      color: var(--text);
+    }
+
+    .hero-statement em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-sub {
+      margin-top: 32px;
+      font-size: 1rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.75;
+    }
+
+    .hero-scroll {
+      margin-top: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .hero-scroll-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(99,102,241,0.3);
+    }
+
+    /* ── SECTION BASE ── */
+    .section {
+      padding: 96px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-full {
+      padding: 96px 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-dim);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 640px;
+    }
+
+    /* ── MANIFESTO BLOCK ── */
+    .manifesto {
+      border-top: 1px solid var(--border);
+    }
+
+    .manifesto-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 96px 48px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .manifesto-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+
+    .manifesto-text {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(244,243,255,0.75);
+      line-height: 1.85;
+    }
+
+    .manifesto-text strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── HUMANCE GRID ── */
+    .humance {
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+    }
+
+    .humance-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+
+    .humance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .humance-card {
+      padding: 40px;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .humance-card:nth-child(2n) { border-right: none; }
+    .humance-card:nth-child(3),
+    .humance-card:nth-child(4) { border-bottom: none; }
+
+    .humance-card:hover { background: var(--bg3); }
+
+    .humance-num {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .humance-name {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .humance-name span {
+      display: block;
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .humance-body {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .humance-cost {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(99,102,241,0.6);
+    }
+
+    /* ── PRODUCTS ── */
+    .products {
+      border-top: 1px solid var(--border);
+    }
+
+    .products-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .prod-link {
+      display: block;
+      padding: 32px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .prod-link:hover {
+      border-color: rgba(99,102,241,0.4);
+      background: var(--bg3);
+      transform: translateY(-3px);
+    }
+
+    .prod-link-tag {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .prod-link-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .prod-link-desc {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .prod-link-arrow {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: letter-spacing 0.2s;
+    }
+
+    .prod-link:hover .prod-link-arrow { letter-spacing: 0.22em; }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .footer-right {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .footer-right a {
+      color: rgba(165,180,252,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-right a:hover { color: var(--muted); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .topbar { padding: 16px 24px; }
+      .topbar-tag { display: none; }
+      .hero { padding: 0 24px 64px; }
+      .manifesto-inner { grid-template-columns: 1fr; gap: 24px; padding: 64px 24px; }
+      .section { padding: 64px 24px; }
+      .section-full { padding: 64px 24px; }
+      .humance-inner { padding: 64px 24px; }
+      .humance-grid { grid-template-columns: 1fr; }
+      .humance-card { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+      .humance-card:last-child { border-bottom: none !important; }
+      .products-inner { padding: 64px 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .footer { padding: 28px 24px; flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <nav class="topbar">
+    <div class="topbar-wordmark">Humacity</div>
+    <div class="topbar-tag">A Virorah Philosophy</div>
+    <a href="https://virorah.com" class="topbar-virorah" target="_blank" rel="noopener">Virorah &rarr;</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">The operating framework</div>
+    <h1 class="hero-statement">
+      Every people decision<br>has a <em>financial dimension.</em>
+    </h1>
+    <p class="hero-sub">
+      Humacity is the framework that names it, measures it, and puts it in a language the boardroom already speaks.
+    </p>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      The framework
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <div class="manifesto">
+    <div class="manifesto-inner reveal">
+      <div class="manifesto-label">What this means</div>
+      <div class="manifesto-text">
+        <p>HR has spent decades treating people decisions as soft. <strong>Humacity holds they are not.</strong> Every hire, every exit, every culture decision, every case that gets managed or mismanaged — each one has a measurable financial event attached to it. Most organisations simply never wrote it down.</p>
+        <br>
+        <p>Humacity names four asset classes that live inside every HR function. They are not metrics. They are <strong>categories of financial value</strong> that HR generates, protects, or destroys — whether it accounts for them or not. Naming them is the first step to measuring them. Measuring them is the first step to owning the conversation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUMANCE ASSET CLASSES -->
+  <div class="humance">
+    <div class="humance-inner">
+      <div class="eyebrow reveal">The HUMANCE framework</div>
+      <h2 class="section-heading reveal">Four asset classes.<br>One financial language.</h2>
+      <div class="humance-grid">
+
+        <div class="humance-card reveal">
+          <div class="humance-num">Asset Class 01</div>
+          <div class="humance-name">
+            <span>Trust Capital</span>
+            The financial value of trust
+          </div>
+          <div class="humance-body">Every organisation runs on trust — between leaders and teams, managers and their reports, the brand and the people it is trying to keep. When trust erodes, the financial event that follows is predictable: attrition spikes, productivity drops, recruitment spend climbs. Most organisations experience this and call it a culture problem. Humacity calls it what it is: a capital erosion event.</div>
+          <div class="humance-cost">Cost when ignored: attrition, productivity loss, rehiring expense</div>
+        </div>
+
+        <div class="humance-card reveal">
+          <div class="humance-num">Asset Class 02</div>
+          <div class="humance-name">
+            <span>Culture Yield</span>
+            The return on culture investment
+          </div>
+          <div class="humance-body">Culture is not a feeling. It is a ratio. The return on every rupee invested in engagement, learning, and team cohesion against the cost of disengagement, absenteeism, and replacement. Most organisations measure culture through annual surveys and net promoter scores. Humacity measures it through its financial yield — what it returns, and what its absence costs.</div>
+          <div class="humance-cost">Cost when ignored: disengagement, absenteeism, innovation gap</div>
+        </div>
+
+        <div class="humance-card reveal">
+          <div class="humance-num">Asset Class 03</div>
+          <div class="humance-name">
+            <span>Signal Intelligence</span>
+            The quality of people data as an asset
+          </div>
+          <div class="humance-body">The quality of your people data is an asset. Its absence is a liability. Late attrition signals, incomplete performance data, and hiring decisions made without workforce analytics all carry a cost that does not appear on the HR budget — it appears on the P&amp;L. Humacity treats signal quality as a measurable asset class and its deterioration as a quantifiable financial risk.</div>
+          <div class="humance-cost">Cost when ignored: late signals, poor decisions, compliance exposure</div>
+        </div>
+
+        <div class="humance-card reveal">
+          <div class="humance-num">Asset Class 04</div>
+          <div class="humance-name">
+            <span>Belonging Premium</span>
+            The financial value of genuine inclusion
+          </div>
+          <div class="humance-body">Genuine belonging generates a financial premium. Organisations where people can bring their full capability to work innovate faster, retain longer, and perform above sector benchmarks. Exclusion — whether by design or neglect — writes off a portion of that premium every quarter. Humacity names and measures what is lost, before the exit interview confirms it.</div>
+          <div class="humance-cost">Cost when ignored: capability underuse, attrition, innovation loss</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="products">
+    <div class="products-inner">
+      <div class="eyebrow reveal">Built on this framework</div>
+      <h2 class="section-heading reveal">Humacity powers<br>three products.</h2>
+      <p class="section-body reveal" style="margin-bottom:0">Each product translates a different dimension of the framework into a working tool for the HR practitioner.</p>
+
+      <div class="products-grid">
+
+        <a href="https://pms.virorah.com/" target="_blank" rel="noopener" class="prod-link reveal">
+          <div class="prod-link-tag">Performance Intelligence</div>
+          <div class="prod-link-name">Virorah PMS</div>
+          <div class="prod-link-desc">A performance management system built on Trust Capital and Signal Intelligence. Structured case history, manager accountability, and decision trails that hold up in any review.</div>
+          <div class="prod-link-arrow">Open PMS &rarr;</div>
+        </a>
+
+        <a href="https://virorah.com" target="_blank" rel="noopener" class="prod-link reveal">
+          <div class="prod-link-tag">HR Intelligence Platform</div>
+          <div class="prod-link-name">Virorah Vantage</div>
+          <div class="prod-link-desc">The intelligence layer for Indian HR professionals. MERIDIAN profiling, case analysis, and monthly Debrief — built on all four HUMANCE asset classes, calibrated for Indian employment law.</div>
+          <div class="prod-link-arrow">Explore Vantage &rarr;</div>
+        </a>
+
+        <a href="https://revenue-fluent.virorah.com" target="_blank" rel="noopener" class="prod-link reveal">
+          <div class="prod-link-tag">Financial Fluency</div>
+          <div class="prod-link-name">Revenue Fluent</div>
+          <div class="prod-link-desc">Five intelligence pillars that translate every people decision into financial language. The platform that teaches HR to own the boardroom conversation — built directly on the Humacity framework.</div>
+          <div class="prod-link-arrow">Open platform &rarr;</div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">Humacity &nbsp;&middot;&nbsp; A Virorah Philosophy &nbsp;&middot;&nbsp; &copy; 2026</div>
+    <div class="footer-right">
+      <a href="https://virorah.com" target="_blank" rel="noopener">virorah.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
