@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Historical Inflection Points — Humacity</title>
+<meta name="description" content="Five documented cases where human capital was the decisive variable. Kodak. Nokia. Blockbuster. Enron. Zappos. Reanalysed through the Humac Score framework.">
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050410;--bg2:rgba(13,11,30,.72);--bg3:#0d0b1e;
+  --accent:#6366f1;--violet:#7c3aed;--lav:#a5b4fc;
+  --red:#E05C3A;--gold:#F0EAE4;
+  --text:#f4f3ff;--muted:rgba(244,243,255,.65);--dim:rgba(244,243,255,.32);
+  --border:rgba(99,102,241,.15);
+  --mono:'JetBrains Mono',monospace;--stat:'Space Grotesk',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(99,102,241,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.025) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(5,4,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lav)}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--lav)}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2),transparent)}
+
+.hero{padding:80px 48px 64px;max-width:1040px;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(99,102,241,.35);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:rgba(99,102,241,.35);text-decoration:none}.breadcrumb a:hover{color:var(--lav)}
+.breadcrumb-sep{color:rgba(99,102,241,.18)}
+.eyebrow{font-family:var(--mono);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lav);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:20px;height:1px;background:rgba(99,102,241,.4)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5.4rem);font-weight:600;font-style:italic;line-height:.95;color:var(--text);margin-bottom:22px}
+.hero-title em{font-style:normal;background:linear-gradient(135deg,#f4f3ff 30%,#a5b4fc 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:28px}
+.premise-block{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-left:3px solid var(--accent);border-radius:12px;padding:22px 26px;max-width:680px}
+.premise-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.premise-text{font-size:.88rem;color:var(--muted);line-height:1.75}
+.premise-text em{color:var(--text);font-style:normal;font-weight:600}
+
+/* CASE NAV */
+.case-nav{padding:20px 48px;max-width:1040px;margin:0 auto;display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.case-nav-item{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:6px;border:1px solid var(--border);color:var(--dim);text-decoration:none;transition:all .15s}
+.case-nav-item:hover{border-color:rgba(99,102,241,.3);color:var(--muted)}
+.case-nav-item.failure{border-color:rgba(224,92,58,.2);color:rgba(224,92,58,.55)}
+.case-nav-item.failure:hover{border-color:rgba(224,92,58,.4);color:rgba(224,92,58,.8)}
+.case-nav-item.success{border-color:rgba(99,102,241,.25);color:rgba(99,102,241,.6)}
+.case-nav-item.success:hover{border-color:rgba(99,102,241,.45);color:var(--lav)}
+
+/* CASE BLOCK */
+.case-block{padding:72px 48px;max-width:1040px;margin:0 auto;position:relative;z-index:1}
+
+.case-header{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;margin-bottom:36px}
+@media(max-width:680px){.case-header{grid-template-columns:1fr}}
+.case-meta{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.case-type{padding:3px 10px;border-radius:4px;font-size:.5rem}
+.case-type.failure{background:rgba(224,92,58,.08);color:rgba(224,92,58,.7);border:1px solid rgba(224,92,58,.2)}
+.case-type.success{background:rgba(99,102,241,.08);color:rgba(99,102,241,.7);border:1px solid rgba(99,102,241,.2)}
+.case-year{color:rgba(99,102,241,.4);font-size:.52rem}
+.case-name{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.4rem,6vw,4.8rem);font-weight:800;letter-spacing:-.03em;line-height:.9;margin-bottom:10px}
+.case-name.fail{color:var(--red)}
+.case-name.win{color:var(--lav)}
+.case-tagline{font-size:.88rem;color:var(--muted);line-height:1.65;max-width:500px}
+.case-snapshot{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;min-width:200px}
+.snap-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.snap-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;border-bottom:1px solid rgba(99,102,241,.06)}
+.snap-row:last-child{border-bottom:none}
+.snap-key{font-size:.72rem;color:var(--dim)}
+.snap-val{font-family:var(--mono);font-size:.72rem;color:var(--text);font-weight:500}
+
+/* HUMAC VERDICT */
+.verdict{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:28px}
+.verdict-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lav);margin-bottom:14px}
+.verdict-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:680px){.verdict-grid{grid-template-columns:1fr 1fr}}
+.vf{padding:12px 14px;border-radius:8px;border:1px solid transparent}
+.vf.critical{background:rgba(224,92,58,.06);border-color:rgba(224,92,58,.2)}
+.vf.weak{background:rgba(99,102,241,.04);border-color:rgba(99,102,241,.14)}
+.vf.strong{background:rgba(99,102,241,.07);border-color:rgba(99,102,241,.22)}
+.vf-pillar{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.vf.critical .vf-pillar{color:rgba(224,92,58,.65)}
+.vf.weak .vf-pillar{color:rgba(99,102,241,.55)}
+.vf.strong .vf-pillar{color:var(--lav)}
+.vf-status{font-family:'Bricolage Grotesque',sans-serif;font-size:.8rem;font-weight:700;margin-bottom:4px}
+.vf.critical .vf-status{color:var(--red)}
+.vf.weak .vf-status{color:var(--gold)}
+.vf.strong .vf-status{color:var(--lav)}
+.vf-detail{font-size:.68rem;color:var(--dim);line-height:1.5}
+
+/* CASE BODY */
+.case-body{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+@media(max-width:760px){.case-body{grid-template-columns:1fr}}
+.cb-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.cb-text{font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.cb-text em{color:var(--text);font-style:normal;font-weight:600}
+
+.humac-reading{background:linear-gradient(135deg,rgba(99,102,241,.07),rgba(99,102,241,.03));border:1px solid rgba(99,102,241,.16);border-radius:12px;padding:20px 22px;margin-top:22px}
+.hr-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.hr-text{font-size:.83rem;color:var(--muted);line-height:1.75;font-style:italic}
+.hr-text em{color:var(--gold);font-style:normal;font-weight:600}
+
+.signal{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid rgba(99,102,241,.06)}
+.signal:last-child{border-bottom:none}
+.signal-dot{width:5px;height:5px;border-radius:50%;margin-top:7px;flex-shrink:0}
+.signal-dot.red{background:var(--red)}
+.signal-dot.green{background:var(--accent)}
+.signal-text{font-size:.79rem;color:var(--dim);line-height:1.6}
+.signal-text em{color:var(--text);font-style:normal}
+
+.footer{padding:26px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-left{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;color:var(--dim)}
+.footer-right{font-family:var(--mono);font-size:.54rem;color:rgba(99,102,241,.22)}
+
+@media(max-width:600px){
+  .nav{padding:12px 20px}.nav-links{display:none}
+  .hero{padding:56px 24px 48px}.case-block{padding:52px 24px}
+  .case-nav{padding:14px 24px}.footer{padding:20px 24px;flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><div class="nav-dot"></div>Humacity</a>
+  <div class="nav-links">
+    <a href="index.html">The Concept</a>
+    <a href="humacity-research.html">Research</a>
+    <a href="humacity-evidence.html">Evidence Base</a>
+    <a href="humacity-inflections.html" class="active">Inflection Points</a>
+    <a href="humacity-spectrum.html">The Spectrum</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="index.html">Humacity</a><span class="breadcrumb-sep">/</span><a href="humacity-research.html">Research</a><span class="breadcrumb-sep">/</span>Historical Inflection Points</div>
+  <div class="eyebrow">Historical Inflection Points</div>
+  <h1 class="hero-title">When Humacity<br>became <em>the variable.</em></h1>
+  <p class="hero-sub">Five documented cases from public record. In each one, the decisive variable was not technology, not market timing, not capital. It was the quality of the human organism inside the organisation — its Humacity position.</p>
+  <div class="premise-block">
+    <div class="premise-label">Methodology</div>
+    <div class="premise-text">These cases are drawn entirely from <em>public record</em>: court documents, published academic research, executive interviews, and journalism. The Humac Score framework is applied as a <em>retrospective analytical lens</em>. The goal is to show that the framework would have named the failure mode before the failure — had it existed at the time.</div>
+  </div>
+</div>
+
+<div class="case-nav">
+  <a href="#kodak" class="case-nav-item failure">↓ Kodak</a>
+  <a href="#nokia" class="case-nav-item failure">↓ Nokia</a>
+  <a href="#blockbuster" class="case-nav-item failure">↓ Blockbuster</a>
+  <a href="#enron" class="case-nav-item failure">↓ Enron</a>
+  <a href="#zappos" class="case-nav-item success">↓ Zappos</a>
+</div>
+
+<div class="divider"></div>
+
+<!-- KODAK -->
+<div class="case-block" id="kodak">
+  <div class="case-header">
+    <div>
+      <div class="case-meta"><span class="case-type failure">Humacity Failure</span><span class="case-year">1996 → 2012</span></div>
+      <div class="case-name fail">Kodak</div>
+      <div class="case-tagline">They invented the digital camera in 1975. They filed for bankruptcy in 2012. The technology was never the problem.</div>
+    </div>
+    <div class="case-snapshot">
+      <div class="snap-label">At the peak</div>
+      <div class="snap-row"><span class="snap-key">Peak value</span><span class="snap-val">$28B (1996)</span></div>
+      <div class="snap-row"><span class="snap-key">Employees</span><span class="snap-val">145,000</span></div>
+      <div class="snap-row"><span class="snap-key">Digital camera invented</span><span class="snap-val">1975</span></div>
+      <div class="snap-row"><span class="snap-key">Bankruptcy</span><span class="snap-val">2012</span></div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Humac Score Pillar Verdict</div>
+    <div class="verdict-grid">
+      <div class="vf critical"><div class="vf-pillar">L1 Value Ledger</div><div class="vf-status">Misallocated</div><div class="vf-detail">Human capital investment producing returns in a declining market. The return ratio was structurally backward-looking.</div></div>
+      <div class="vf weak"><div class="vf-pillar">L2 Talent Premium</div><div class="vf-status">Trapped</div><div class="vf-detail">Exceptional technical talent existed but was structurally prevented from generating return in the right market.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L3 Org Vitals</div><div class="vf-status">Critical</div><div class="vf-detail">Fear architecture. Hierarchical bureaucracy suppressed digital innovation. Risk aversion was the operating culture.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L4 Human P&L</div><div class="vf-status">Inverted</div><div class="vf-detail">HR investment producing returns against a shrinking revenue base. Human Gross Margin was compressing year on year.</div></div>
+      <div class="vf weak"><div class="vf-pillar">L5 Balance Sheet</div><div class="vf-status">Eroding</div><div class="vf-detail">Institutional knowledge concentrated in film. Skill Debt accumulating as talent base became obsolete. Net Human Worth declining.</div></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Kodak's engineers built the world's first digital camera in 1975. Steve Sasson, the Kodak engineer who invented it, later described presenting it to management and being told not to tell anyone. By 1986, Kodak had developed the first megapixel sensor. In the mid-2000s, Kodak briefly held the top market share position in US digital cameras. It had the technology. It had the talent. What it did not have was an organisation capable of deploying that talent in the direction the market was moving.</p>
+      <p class="cb-text">The Cambridge University Business History Review documented what followed: <em>Kodak could not generate meaningful financial returns despite impressive technical talent</em>, because the organisation's structure, culture, and incentive systems were built to protect the film business. Engineers working on digital were structurally working against the interests of the people who controlled their careers.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Kodak's Humac failure was not a talent failure — it was an <em>L3 Org Vitals failure at the Execution Fidelity signal</em>. The organisation knew the future. Its people could see it. What the culture prevented was the act of choosing it. Fear of cannibalising the film business, hierarchical decision-making, and compartmentalised management created an organism that could invent the future and simultaneously refuse to inhabit it. An organisation at <em>Value Neutral to Value Destruction</em> across most pillars by the time bankruptcy arrived.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that were present</div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Fear architecture:</em> Engineers were instructed not to publicise digital camera development. Innovation was suppressed at the manager level.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Misaligned incentives:</em> Compensation tied to film division performance. Digital success created internal competition rather than internal momentum.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Hierarchical suppression:</em> Matrix structure made it impossible to act on cross-divisional opportunities. Compartmentalisation defeated collaboration — a classic Middle Layer Health failure.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Skill Debt accumulating:</em> 145,000-person workforce trained and incentivised for a market that was shrinking. The L5 Balance Sheet liability was building silently.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Leadership energy directed inward:</em> Senior leadership focused on protecting existing margin rather than directing human capital toward the future market. Leadership Pulse — the first Org Vitals signal — was failing.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- NOKIA -->
+<div class="case-block" id="nokia">
+  <div class="case-header">
+    <div>
+      <div class="case-meta"><span class="case-type failure">Humacity Failure</span><span class="case-year">2007 → 2013</span></div>
+      <div class="case-name fail">Nokia</div>
+      <div class="case-tagline">In 2007, Nokia held 50% of the global smartphone market. Six years later, Microsoft acquired the handset division for $7.2 billion. A middle management culture that broke the transmission belt.</div>
+    </div>
+    <div class="case-snapshot">
+      <div class="snap-label">At the peak</div>
+      <div class="snap-row"><span class="snap-key">Peak value</span><span class="snap-val">~$250B</span></div>
+      <div class="snap-row"><span class="snap-key">Market share</span><span class="snap-val">50% (2007)</span></div>
+      <div class="snap-row"><span class="snap-key">Acquired</span><span class="snap-val">$7.2B (2013)</span></div>
+      <div class="snap-row"><span class="snap-key">Value lost</span><span class="snap-val">~97%</span></div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Humac Score Pillar Verdict</div>
+    <div class="verdict-grid">
+      <div class="vf weak"><div class="vf-pillar">L1 Value Ledger</div><div class="vf-status">Declining</div><div class="vf-detail">Revenue per employee deteriorated as product quality fell. Human capital investment yielding diminishing returns.</div></div>
+      <div class="vf weak"><div class="vf-pillar">L2 Talent Premium</div><div class="vf-status">Departing</div><div class="vf-detail">2004 reorganisation caused departure of key executive talent. CTO role eliminated 2007 — the year the iPhone launched.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L3 Org Vitals</div><div class="vf-status">Collapsed</div><div class="vf-detail">INSEAD research confirmed: fear culture between middle management and leadership. Optimistic upward reporting masked real product quality decline.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L4 Human P&L</div><div class="vf-status">Negative</div><div class="vf-detail">Human cost per unit of competitive output was increasing. Every people investment was producing declining returns.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L5 Balance Sheet</div><div class="vf-status">Eroding</div><div class="vf-detail">Institutional knowledge walked out with departing executives. Human assets shrinking while Skill Debt and reputational liabilities grew.</div></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Between 2012 and 2014, INSEAD researchers Timo Vuori and Quy Huy interviewed 76 of Nokia's top managers, middle managers, engineers, and consultants. What they found was the most clinically documented case of middle layer decay in modern corporate history: <em>middle managers were giving optimistic reports upward because they feared the consequences of delivering bad news</em>, and top managers were pushing harder in response, which caused product quality to decline.</p>
+      <p class="cb-text">Nokia's N97, released in 2009, had weaker phone connections than previous Nokia models and a touchscreen that failed to match iOS. This was not an engineering failure. It was the product of a management culture in which the people responsible for quality were too afraid to communicate the truth about where the product stood.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Nokia's primary failure pillar was <em>L3 Org Vitals — specifically the Fear Index and Middle Layer Health signals</em>. When middle managers cannot tell the truth upward, the organisation loses its ability to process reality. Leadership makes decisions based on optimistic reports. The customer feels what leadership cannot see, because the middle layer has severed the connection. Nokia had the engineers. It had the market position. What it lacked was an organism capable of carrying accurate information from the people making the product to the people making the decisions. A <em>Value Destruction</em> reading on L3, cascading into every other pillar.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that were present</div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Fear-based upward reporting:</em> INSEAD research confirmed middle managers delivered optimistic assessments regardless of product reality. Leadership was flying blind — the Fear Index signal at its most destructive.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Matrix reorganisation damage:</em> The 2004 restructure created internal competition rather than collaboration. Middle executives had no experience in integrative negotiation — a Middle Layer Health failure built into the org structure.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Executive talent departure:</em> Key members of the executive team departed following the reorganisation. The CTO, Nokia's most senior technical intelligence officer, was eliminated from leadership in 2007.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Closed innovation culture:</em> Nokia's risk-averse, closed organisational culture could not respond when the market required open, collaborative innovation. Org Vitals — Execution Fidelity signal — was misaligned with competitive reality.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BLOCKBUSTER -->
+<div class="case-block" id="blockbuster">
+  <div class="case-header">
+    <div>
+      <div class="case-meta"><span class="case-type failure">Humacity Failure</span><span class="case-year">2000 → 2010</span></div>
+      <div class="case-name fail">Blockbuster</div>
+      <div class="case-tagline">In 2000, Netflix offered to sell itself for $50 million. Blockbuster's leadership declined. In 2010, Blockbuster filed for bankruptcy. The decision was made by people, not markets.</div>
+    </div>
+    <div class="case-snapshot">
+      <div class="snap-label">At the peak</div>
+      <div class="snap-row"><span class="snap-key">Peak value</span><span class="snap-val">$4.8B</span></div>
+      <div class="snap-row"><span class="snap-key">Employees</span><span class="snap-val">60,000</span></div>
+      <div class="snap-row"><span class="snap-key">Stores</span><span class="snap-val">9,000</span></div>
+      <div class="snap-row"><span class="snap-key">Bankruptcy</span><span class="snap-val">2010</span></div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Humac Score Pillar Verdict</div>
+    <div class="verdict-grid">
+      <div class="vf critical"><div class="vf-pillar">L1 Value Ledger</div><div class="vf-status">Structural loss</div><div class="vf-detail">60,000 employees serving a business model generating negative returns for most of 1996–2010.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L2 Talent Premium</div><div class="vf-status">Wrong hire</div><div class="vf-detail">CEO appointed who explicitly stated he did not see Netflix or Redbox as competitive threats — in 2008.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L3 Org Vitals</div><div class="vf-status">Leadership vacuum</div><div class="vf-detail">Board suppressed the most capable internal advocate for digital transition. Leadership Energy — the primary Org Vitals signal — was absent at the decisive moment.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L4 Human P&L</div><div class="vf-status">Inverted</div><div class="vf-detail">Human capital costs tied to a physical footprint that was becoming a liability. Human Gross Margin deeply negative.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L5 Balance Sheet</div><div class="vf-status">Negative NHW</div><div class="vf-detail">Human liabilities exceeded human assets by 2007. The skill base was brick-and-mortar retail. The gap was not closeable at that scale.</div></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Blockbuster CEO John Antioco sat across from Reed Hastings in Dallas in 2000. Netflix had just launched its subscription model. Hastings offered 49% of Netflix for $50 million. Antioco declined. Carl Icahn, an activist investor, later led the ouster of Antioco — the one Blockbuster leader who had begun building a genuine digital response — and replaced him with Jim Keyes, the former CEO of 7-Eleven. Keyes stated publicly in 2008 that neither Netflix nor Redbox were on his radar as competitive threats.</p>
+      <p class="cb-text">Two years later, Blockbuster filed for Chapter 11 bankruptcy. Netflix's current market capitalisation exceeds $400 billion. <em>The decision in that boardroom was made by people.</em> Not by the market, not by technology, not by bad luck.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Blockbuster is the clearest case in this analysis of <em>Leadership Energy absent at the decisive moment — the most catastrophic single failure in L3 Org Vitals</em>. Worse, it is a case where the leadership capable of navigating the transition was actively removed and replaced with leadership that denied the transition was necessary. The 60,000 people — most of whom understood the threat at the store level — had no leadership capable of translating that understanding into action. The Humac Score would have shown <em>Value Destruction</em> across all five pillars by 2007. The organisation was already beyond recovery.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that were present</div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Leadership quality mismatch:</em> Jim Keyes was a convenience store operator appointed to lead a digital media transition. The single most consequential wrong hire in L2 Talent Premium terms — at the CEO level.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Board-level suppression of talent:</em> The person most capable of navigating the transition was removed because his digital strategy threatened short-term shareholder returns.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Workforce Obsolescence Risk:</em> 60,000 employees trained in physical retail. No parallel development of digital capabilities. The L5 Balance Sheet liability was growing while the asset was evaporating.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Institutional blindness:</em> In 2008, the CEO explicitly stated competitors were not a threat. Leadership Pulse had gone dark at the most senior level.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ENRON -->
+<div class="case-block" id="enron">
+  <div class="case-header">
+    <div>
+      <div class="case-meta"><span class="case-type failure">Humacity Failure</span><span class="case-year">1997 → 2001</span></div>
+      <div class="case-name fail">Enron</div>
+      <div class="case-tagline">They called themselves the smartest people in the room. The HR system was designed to confirm it. What it actually produced was an organisation so afraid of appearing weak that it destroyed itself rather than admit one.</div>
+    </div>
+    <div class="case-snapshot">
+      <div class="snap-label">At the peak</div>
+      <div class="snap-row"><span class="snap-key">Fortune rank</span><span class="snap-val">7th largest (2001)</span></div>
+      <div class="snap-row"><span class="snap-key">Employees</span><span class="snap-val">~20,000</span></div>
+      <div class="snap-row"><span class="snap-key">Liabilities</span><span class="snap-val">$63.4B</span></div>
+      <div class="snap-row"><span class="snap-key">Bankruptcy</span><span class="snap-val">December 2001</span></div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Humac Score Pillar Verdict</div>
+    <div class="verdict-grid">
+      <div class="vf critical"><div class="vf-pillar">L1 Value Ledger</div><div class="vf-status">Fabricated</div><div class="vf-detail">Human capital deployed in service of financial engineering, not financial generation. Apparent return was fraudulent.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L2 Talent Premium</div><div class="vf-status">Weaponised</div><div class="vf-detail">Top talent selected and incentivised to maximise short-term metrics at any cost. High talent density deployed against the organisation's survival.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L3 Org Vitals</div><div class="vf-status">Toxic — all six signals</div><div class="vf-detail">Rank-and-yank fired 15% biannually. Fear was the primary operating mode. Psychological safety — the HR Mirror signal — was zero.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L4 Human P&L</div><div class="vf-status">Inverted</div><div class="vf-detail">Every fraudulent deal required more human effort to sustain and conceal. The real Human P&L was deeply negative.</div></div>
+      <div class="vf critical"><div class="vf-pillar">L5 Balance Sheet</div><div class="vf-status">Illusory</div><div class="vf-detail">Human assets were real but deployed toward destruction. Culture Liability was the dominant balance sheet entry. Net Human Worth was negative in reality.</div></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Enron's Performance Review Committee evaluated all employees twice a year using a forced ranking system: the bottom 15% were terminated regardless of absolute performance. CEO Jeffrey Skilling described it as "the glue that holds the company together." Court testimony and the documentary record confirm what this produced: <em>employees hid bad news, manipulated financial figures, and engaged in ethical compromise to protect their rankings.</em></p>
+      <p class="cb-text">Jim Chanos, the short-seller who predicted Enron's collapse, later noted that rank-and-yank likely caused employees to conceal problems that, had they been surfaced, might have prompted corrective action before the fraud became irreversible. Enron filed for bankruptcy in December 2001 with $63.4 billion in liabilities.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Enron is the most extreme case of <em>culture as liability — the Culture Liability line on the L5 Human Balance Sheet at its theoretical maximum</em>. Every Org Vitals signal was in critical condition. The primary failure was the HR Mirror signal: Enron's HR architecture was the mechanism of collapse. It optimised for the appearance of performance at the direct expense of actual performance. Enron did not collapse despite having smart, talented, ambitious people. It collapsed <em>because</em> those people were operating inside a human system designed to destroy honesty.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that were present</div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Fear as primary operating mode:</em> Rank-and-yank fired the bottom 15% biannually. The system created an environment where survival required appearing to perform regardless of reality. The Fear Index was structurally maximised.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>HR Mirror failure:</em> The HR function was the instrument of the culture's toxicity, not a corrective voice. Court testimony confirms Skilling told employees that profit at all costs was the priority.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Suppression of bad news:</em> The system provided direct financial incentive to conceal problems. No psychological safety existed anywhere in the organisation.</div></div>
+      <div class="signal"><div class="signal-dot red"></div><div class="signal-text"><em>Talent misdeployment:</em> Harvard MBAs and top-tier financial talent — genuine Talent Premium on paper — deployed in service of financial engineering rather than value creation. High L2 score masking catastrophic L3.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ZAPPOS -->
+<div class="case-block" id="zappos">
+  <div class="case-header">
+    <div>
+      <div class="case-meta"><span class="case-type success">Humacity Success</span><span class="case-year">1999 → 2009</span></div>
+      <div class="case-name win">Zappos</div>
+      <div class="case-tagline">They sold shoes online. So did hundreds of others. What made Zappos worth $1.2 billion in ten years was not the shoes. It was the deliberate construction of a human organism whose Humacity was the competitive advantage itself.</div>
+    </div>
+    <div class="case-snapshot">
+      <div class="snap-label">The build</div>
+      <div class="snap-row"><span class="snap-key">Revenue 2000</span><span class="snap-val">$1.6M</span></div>
+      <div class="snap-row"><span class="snap-key">Revenue 2008</span><span class="snap-val">$1B+</span></div>
+      <div class="snap-row"><span class="snap-key">Acquired by Amazon</span><span class="snap-val">$1.2B (2009)</span></div>
+      <div class="snap-row"><span class="snap-key">Repeat customers</span><span class="snap-val">75% of sales</span></div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="verdict-label">Humac Score Pillar Verdict</div>
+    <div class="verdict-grid">
+      <div class="vf strong"><div class="vf-pillar">L1 Value Ledger</div><div class="vf-status">Compounding</div><div class="vf-detail">Revenue grew from $1.6M to $1B+ in eight years. Human capital investment generating returns at acquisition-grade levels.</div></div>
+      <div class="vf strong"><div class="vf-pillar">L2 Talent Premium</div><div class="vf-status">Culture-filtered</div><div class="vf-detail">Cultural fit used as a hiring veto regardless of technical skill. Talent Premium generated by filtering for Humacity alignment, not just competence.</div></div>
+      <div class="vf strong"><div class="vf-pillar">L3 Org Vitals</div><div class="vf-status">Exceptional</div><div class="vf-detail">97% employee satisfaction. Psychological safety was the operating norm. All six Org Vitals signals in healthy territory — rare at scale.</div></div>
+      <div class="vf strong"><div class="vf-pillar">L4 Human P&L</div><div class="vf-status">Strongly positive</div><div class="vf-detail">Culture-driven service generated 75% repeat purchase rates. Human Gross Margin compounding above sector norms.</div></div>
+      <div class="vf strong"><div class="vf-pillar">L5 Balance Sheet</div><div class="vf-status">Net Human Worth building</div><div class="vf-detail">Culture Asset was the dominant balance sheet entry — and explicitly valued in Amazon's $1.2B acquisition price.</div></div>
+    </div>
+  </div>
+
+  <div class="case-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Tony Hsieh joined Zappos as CEO in 2000. His thesis was not about shoes. It was about what happens when an organisation treats human capital as the primary competitive variable. Every operational decision at Zappos was filtered through the question of what it would do to the culture, and therefore to the customer experience, and therefore to the revenue.</p>
+      <p class="cb-text">Zappos famously offered new hires $2,000 to quit after their first week of training. The offer was not a gimmick — it was a diagnostic. <em>Employees who took the money revealed a values mismatch before it could damage the customer experience.</em> By 2008, revenue exceeded $1 billion. Seventy-five percent of purchases on any given day came from repeat customers. In 2009, Amazon acquired Zappos for $1.2 billion. The acquisition documents were explicit: Amazon was buying the culture as much as the company.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Zappos is the positive case precisely because it demonstrates that <em>Humacity can be built deliberately</em>. Hsieh did not stumble into a high-performing culture. He constructed it, measured it, filtered for it in every hire, and protected it in every operational decision. The 75% repeat purchase rate was the financial expression of an L3 Org Vitals score that was measurably exceptional. The $1.2 billion acquisition price was the Net Human Worth of the organisation rendered in market terms. <em>Value Exceptional — across all five pillars, compounding over a decade.</em></div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that were present</div>
+      <div class="signal"><div class="signal-dot green"></div><div class="signal-text"><em>Culture as hiring criterion:</em> Recruiters held veto power over candidates regardless of the hiring manager's technical assessment. Cultural fit was a non-negotiable filter — Peer &amp; Recognition Culture signal at maximum.</div></div>
+      <div class="signal"><div class="signal-dot green"></div><div class="signal-text"><em>Psychological safety by design:</em> Customer service representatives were empowered to make decisions without management approval. Trust was the operating norm — Fear Index at zero.</div></div>
+      <div class="signal"><div class="signal-dot green"></div><div class="signal-text"><em>Leadership energy directed outward:</em> Hsieh's focus was consistently on employees and customers, not shareholders or operational metrics. Leadership Pulse sustained over a decade.</div></div>
+      <div class="signal"><div class="signal-dot green"></div><div class="signal-text"><em>Culture Asset valued explicitly at exit:</em> Amazon's $1.2B acquisition included explicit retention of Hsieh and protection of the Zappos culture. The acquirer priced the L5 Balance Sheet's Culture Asset directly.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<footer class="footer">
+  <div class="footer-left">Humacity · Historical Inflection Points · humacity.com</div>
+  <div class="footer-right">Research foundation of the Humac Score · 2026</div>
+</footer>
+
+</body>
+</html>

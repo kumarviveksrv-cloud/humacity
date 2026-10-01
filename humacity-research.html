@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Humacity Research — The Intellectual Foundation</title>
+<meta name="description" content="The research, evidence, and historical analysis that validates Humacity as a framework for understanding human capital and the Humac Score.">
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050410;--bg2:rgba(13,11,30,.72);--bg3:#0d0b1e;
+  --accent:#6366f1;--violet:#7c3aed;--lav:#a5b4fc;
+  --text:#f4f3ff;--muted:rgba(244,243,255,.65);--dim:rgba(244,243,255,.32);
+  --border:rgba(99,102,241,.15);
+  --mono:'JetBrains Mono',monospace;--stat:'Space Grotesk',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(99,102,241,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.025) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(5,4,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lav)}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--lav)}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2),transparent)}
+
+.hero{padding:80px 48px 64px;max-width:1040px;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(99,102,241,.35);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:rgba(99,102,241,.35);text-decoration:none}.breadcrumb a:hover{color:var(--lav)}
+.breadcrumb-sep{color:rgba(99,102,241,.18)}
+.eyebrow{font-family:var(--mono);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lav);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:20px;height:1px;background:rgba(99,102,241,.4)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5.4rem);font-weight:600;font-style:italic;line-height:.95;color:var(--text);margin-bottom:22px}
+.hero-title em{font-style:normal;background:linear-gradient(135deg,#f4f3ff 30%,#a5b4fc 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:580px}
+
+.section{padding:64px 48px;max-width:1040px;margin:0 auto;position:relative;z-index:1}
+
+/* RESEARCH CARDS */
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+@media(max-width:680px){.research-grid{grid-template-columns:1fr}}
+.research-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:34px;position:relative;overflow:hidden;text-decoration:none;display:block;transition:border-color .2s,transform .2s}
+.research-card:hover{border-color:rgba(99,102,241,.35);transform:translateY(-2px)}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.rc-status{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:4px}
+.rc-status.live{color:var(--lav);background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.2)}
+.rc-num{font-family:var(--stat);font-size:3rem;font-weight:700;letter-spacing:-.05em;color:rgba(99,102,241,.1);line-height:1;margin-bottom:14px}
+.rc-title{font-family:'Bricolage Grotesque',sans-serif;font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.25}
+.rc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.rc-tag{font-family:var(--mono);font-size:.48rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:3px;background:rgba(99,102,241,.07);color:var(--muted);border:1px solid rgba(99,102,241,.12)}
+.rc-sub{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.rc-cta{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--lav);display:flex;align-items:center;gap:6px}
+
+/* FEATURED CARD — full width */
+.research-card.full{grid-column:span 2}
+@media(max-width:680px){.research-card.full{grid-column:span 1}}
+
+/* PRINCIPLE BLOCK */
+.principles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:40px}
+@media(max-width:680px){.principles{grid-template-columns:1fr}}
+.principle{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
+.principle-num{font-family:var(--stat);font-size:1.8rem;font-weight:700;color:rgba(99,102,241,.13);line-height:1;margin-bottom:8px}
+.principle-title{font-family:'Bricolage Grotesque',sans-serif;font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.principle-body{font-size:.76rem;color:var(--muted);line-height:1.65}
+
+/* STATEMENT */
+.statement{padding:64px 48px;background:linear-gradient(135deg,rgba(99,102,241,.05),rgba(99,102,241,.02));border-top:1px solid rgba(99,102,241,.1);border-bottom:1px solid rgba(99,102,241,.1);text-align:center;position:relative;z-index:1}
+.statement-inner{max-width:640px;margin:0 auto}
+.statement-eyebrow{font-family:var(--mono);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lav);margin-bottom:18px}
+.statement-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:600;line-height:1.45;color:var(--text)}
+.statement-text em{color:var(--lav);font-style:italic}
+.statement-sub{font-size:.86rem;color:var(--muted);line-height:1.75;margin-top:16px}
+
+.footer{padding:26px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-left{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;color:var(--dim)}
+.footer-right{font-family:var(--mono);font-size:.54rem;color:rgba(99,102,241,.22)}
+
+@media(max-width:600px){
+  .nav{padding:12px 20px}.nav-links{display:none}
+  .hero{padding:56px 24px 48px}.section{padding:52px 24px}
+  .statement{padding:52px 24px}.footer{padding:20px 24px;flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><div class="nav-dot"></div>Humacity</a>
+  <div class="nav-links">
+    <a href="index.html">The Concept</a>
+    <a href="humacity-research.html" class="active">Research</a>
+    <a href="humacity-evidence.html">Evidence Base</a>
+    <a href="humacity-inflections.html">Inflection Points</a>
+    <a href="humacity-spectrum.html">The Spectrum</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="index.html">Humacity</a><span class="breadcrumb-sep">/</span>Research</div>
+  <div class="eyebrow">Humacity Research</div>
+  <h1 class="hero-title">The intellectual<br><em>foundation.</em></h1>
+  <p class="hero-sub">Humacity is not an assertion. It is a framework built on decades of independent research, documented organisational history, and original analysis. This is where we show our working — and map it to the five pillars of the Humac Score.</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="research-grid">
+
+    <a href="humacity-evidence.html" class="research-card">
+      <div class="rc-status live">&#9679;&nbsp; Live</div>
+      <div class="rc-num">01</div>
+      <div class="rc-title">The Evidence Base</div>
+      <div class="rc-tags">
+        <span class="rc-tag">McKinsey MGI</span>
+        <span class="rc-tag">Gallup</span>
+        <span class="rc-tag">SHRM</span>
+        <span class="rc-tag">Chicago Booth</span>
+        <span class="rc-tag">US Dept of Labor</span>
+      </div>
+      <div class="rc-sub">What thirty years of independent research says about the financial reality of human capital. Six bodies of evidence, organised under the Humacity framework — each one mapped to the specific Humac Score pillar it validates.</div>
+      <div class="rc-cta">Read the evidence →</div>
+    </a>
+
+    <a href="humacity-inflections.html" class="research-card">
+      <div class="rc-status live">&#9679;&nbsp; Live</div>
+      <div class="rc-num">02</div>
+      <div class="rc-title">Historical Inflection Points</div>
+      <div class="rc-tags">
+        <span class="rc-tag">Kodak</span>
+        <span class="rc-tag">Nokia</span>
+        <span class="rc-tag">Blockbuster</span>
+        <span class="rc-tag">Enron</span>
+        <span class="rc-tag">Zappos</span>
+      </div>
+      <div class="rc-sub">Five documented cases where human capital was the decisive variable. Reanalysed through the Humac Score's L1–L5 pillar framework. What the public record tells us about which pillars failed, and at which signals — before the failure arrived.</div>
+      <div class="rc-cta">Read the case analyses →</div>
+    </a>
+
+    <a href="humacity-spectrum.html" class="research-card full">
+      <div class="rc-status live">&#9679;&nbsp; Live</div>
+      <div class="rc-num">03</div>
+      <div class="rc-title">The Humac Spectrum</div>
+      <div class="rc-tags">
+        <span class="rc-tag">Value Destruction</span>
+        <span class="rc-tag">Value Neutral</span>
+        <span class="rc-tag">Value Generating</span>
+        <span class="rc-tag">Value Compounding</span>
+        <span class="rc-tag">Value Exceptional</span>
+        <span class="rc-tag">Public record</span>
+      </div>
+      <div class="rc-sub">What each Humac Score band looks like in organisational reality — illustrated through documented real-world cases drawn entirely from public record. Wells Fargo, General Motors, Microsoft, Southwest Airlines, NVIDIA. Five bands, five organisations, one framework applied consistently across all of them.</div>
+      <div class="rc-cta">Read the spectrum →</div>
+    </a>
+
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="eyebrow">Research principles</div>
+  <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:12px">How this research is built.</h2>
+  <p style="font-size:.9rem;color:var(--muted);line-height:1.8;max-width:540px;margin-bottom:40px">Three rules govern everything on this page.</p>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="principle-num">01</div>
+      <div class="principle-title">Public record only</div>
+      <div class="principle-body">Every case study and every data point cited here comes from published academic research, court documents, journalism, or official regulatory filings. No proprietary data is presented as proof of the framework.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">02</div>
+      <div class="principle-title">Retrospective lens, not prediction</div>
+      <div class="principle-body">The Humac Score framework is applied to historical cases as an analytical lens, not a prediction tool. The goal is to show that the framework would have named the failure mode before the failure — had it existed at the time.</div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">03</div>
+      <div class="principle-title">Connected to the pillars</div>
+      <div class="principle-body">Every piece of research is mapped to a specific Humac Score pillar (L1–L5) or sub-signal. The framework is not cited loosely — each connection is explicit, named, and falsifiable.</div>
+    </div>
+  </div>
+</div>
+
+<div class="statement">
+  <div class="statement-inner">
+    <div class="statement-eyebrow">Why this matters</div>
+    <div class="statement-text">Humacity does not need to be invented.<br>It needs to be <em>recognised.</em></div>
+    <div class="statement-sub">The research community has been documenting the financial impact of human capital for three decades. What has been missing is a shared language that makes those findings legible to a board. Humacity is that language. The Humac Score is the instrument that puts it in a format a CFO can read.</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-left">Humacity Research · humacity.com</div>
+  <div class="footer-right">The intellectual foundation of the Humac Score · 2026</div>
+</footer>
+
+</body>
+</html>

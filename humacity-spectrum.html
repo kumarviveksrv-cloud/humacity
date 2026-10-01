@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Humac Spectrum — Humacity</title>
+<meta name="description" content="What each Humac Score band looks like in organisational reality. Five bands, five documented organisations, one framework applied consistently.">
+<link rel="icon" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050410;--bg2:rgba(13,11,30,.72);--bg3:#0d0b1e;
+  --accent:#6366f1;--violet:#7c3aed;--lav:#a5b4fc;
+  --red:#E05C3A;--amber:#f59e0b;--green:#10b981;
+  --text:#f4f3ff;--muted:rgba(244,243,255,.65);--dim:rgba(244,243,255,.32);
+  --border:rgba(99,102,241,.15);
+  --mono:'JetBrains Mono',monospace;--stat:'Space Grotesk',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(99,102,241,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.025) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;z-index:0}
+
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 48px;background:rgba(5,4,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lav)}
+.nav-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--lav)}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2),transparent)}
+
+.hero{padding:80px 48px 64px;max-width:1040px;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(99,102,241,.35);margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:rgba(99,102,241,.35);text-decoration:none}.breadcrumb a:hover{color:var(--lav)}
+.breadcrumb-sep{color:rgba(99,102,241,.18)}
+.eyebrow{font-family:var(--mono);font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lav);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:20px;height:1px;background:rgba(99,102,241,.4)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5.4rem);font-weight:600;font-style:italic;line-height:.95;color:var(--text);margin-bottom:22px}
+.hero-title em{font-style:normal;background:linear-gradient(135deg,#f4f3ff 30%,#a5b4fc 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:580px;margin-bottom:28px}
+.premise-block{background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-left:3px solid var(--accent);border-radius:12px;padding:22px 26px;max-width:680px}
+.premise-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.premise-text{font-size:.88rem;color:var(--muted);line-height:1.75}
+.premise-text em{color:var(--text);font-style:normal;font-weight:600}
+
+/* SPECTRUM RAIL */
+.spectrum-rail{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:48px 48px 0;border-radius:10px;overflow:hidden;position:relative;z-index:1}
+.rail-band{padding:14px 16px;text-align:center;cursor:pointer;text-decoration:none;display:block;transition:opacity .15s}
+.rail-band:hover{opacity:.85}
+.rail-range{font-family:var(--stat);font-size:1.2rem;font-weight:700;letter-spacing:-.03em;color:#fff;line-height:1;margin-bottom:4px}
+.rail-name{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.rb1{background:rgba(224,92,58,.75)}
+.rb2{background:rgba(99,102,241,.45)}
+.rb3{background:rgba(99,102,241,.6)}
+.rb4{background:rgba(99,102,241,.78)}
+.rb5{background:rgba(124,58,237,.85)}
+
+/* BAND BLOCKS */
+.band-block{padding:72px 48px;max-width:1040px;margin:0 auto;position:relative;z-index:1;scroll-margin-top:80px}
+
+.band-header{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;margin-bottom:32px}
+@media(max-width:680px){.band-header{grid-template-columns:1fr}}
+.band-score-block{text-align:right;flex-shrink:0}
+.band-range-large{font-family:var(--stat);font-size:2.8rem;font-weight:700;letter-spacing:-.05em;line-height:1}
+.band-name-large{font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.01em;margin-top:4px}
+.band-eyebrow{font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+.band-org-name{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:.9;margin-bottom:10px}
+.band-tagline{font-size:.88rem;color:var(--muted);line-height:1.65;max-width:500px}
+.band-snapshot{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;min-width:200px}
+.snap-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.snap-row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid rgba(99,102,241,.06)}
+.snap-row:last-child{border-bottom:none}
+.snap-key{font-size:.72rem;color:var(--dim)}
+.snap-val{font-family:var(--mono);font-size:.72rem;color:var(--text);font-weight:500}
+
+/* PILLAR READINGS */
+.pillar-readings{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:28px}
+@media(max-width:680px){.pillar-readings{grid-template-columns:1fr 1fr}}
+.pr-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.pr-pillar{font-family:var(--mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.pr-status{font-family:'Bricolage Grotesque',sans-serif;font-size:.8rem;font-weight:700;margin-bottom:3px}
+.pr-detail{font-size:.66rem;color:var(--dim);line-height:1.5}
+
+/* BAND BODY */
+.band-body{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:760px){.band-body{grid-template-columns:1fr}}
+.cb-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.cb-text{font-size:.84rem;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.cb-text em{color:var(--text);font-style:normal;font-weight:600}
+.humac-reading{background:linear-gradient(135deg,rgba(99,102,241,.07),rgba(99,102,241,.03));border:1px solid rgba(99,102,241,.16);border-radius:12px;padding:20px 22px;margin-top:20px}
+.hr-label{font-family:var(--mono);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.hr-text{font-size:.83rem;color:var(--muted);line-height:1.75;font-style:italic}
+.hr-text em{color:#F0EAE4;font-style:normal;font-weight:600}
+.signal{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(99,102,241,.06)}
+.signal:last-child{border-bottom:none}
+.signal-dot{width:5px;height:5px;border-radius:50%;margin-top:7px;flex-shrink:0;background:var(--accent)}
+.signal-text{font-size:.79rem;color:var(--dim);line-height:1.6}
+.signal-text em{color:var(--text);font-style:normal}
+
+.footer{padding:26px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-left{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;color:var(--dim)}
+.footer-right{font-family:var(--mono);font-size:.54rem;color:rgba(99,102,241,.22)}
+
+@media(max-width:600px){
+  .nav{padding:12px 20px}.nav-links{display:none}
+  .hero{padding:56px 24px 48px}.band-block{padding:52px 24px}
+  .spectrum-rail{margin:32px 24px 0}.footer{padding:20px 24px;flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><div class="nav-dot"></div>Humacity</a>
+  <div class="nav-links">
+    <a href="index.html">The Concept</a>
+    <a href="humacity-research.html">Research</a>
+    <a href="humacity-evidence.html">Evidence Base</a>
+    <a href="humacity-inflections.html">Inflection Points</a>
+    <a href="humacity-spectrum.html" class="active">The Spectrum</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="index.html">Humacity</a><span class="breadcrumb-sep">/</span><a href="humacity-research.html">Research</a><span class="breadcrumb-sep">/</span>The Humac Spectrum</div>
+  <div class="eyebrow">The Humac Spectrum</div>
+  <h1 class="hero-title">What each band looks<br>like in <em>reality.</em></h1>
+  <p class="hero-sub">The Humac Score produces five positions, from Value Destruction to Value Exceptional. This page shows what each position looks like in a real, documented organisation — drawn entirely from public record, court filings, published research, and journalism.</p>
+  <div class="premise-block">
+    <div class="premise-label">Methodology</div>
+    <div class="premise-text">No proprietary data. No modelled employees. Every organisation cited here is drawn from <em>public record</em> — regulatory filings, academic case studies, published journalism. The Humac Score framework is applied as a retrospective analytical lens: which band would this organisation have occupied, and <em>which pillars would have put it there?</em></div>
+  </div>
+</div>
+
+<!-- SPECTRUM RAIL -->
+<div class="spectrum-rail">
+  <a href="#destruction" class="rail-band rb1"><div class="rail-range">0–30</div><div class="rail-name">Value Destruction</div></a>
+  <a href="#neutral" class="rail-band rb2"><div class="rail-range">31–50</div><div class="rail-name">Value Neutral</div></a>
+  <a href="#generating" class="rail-band rb3"><div class="rail-range">51–70</div><div class="rail-name">Value Generating</div></a>
+  <a href="#compounding" class="rail-band rb4"><div class="rail-range">71–85</div><div class="rail-name">Value Compounding</div></a>
+  <a href="#exceptional" class="rail-band rb5"><div class="rail-range">86–100</div><div class="rail-name">Value Exceptional</div></a>
+</div>
+
+<div class="divider" style="margin-top:48px"></div>
+
+<!-- BAND 1: VALUE DESTRUCTION — Wells Fargo -->
+<div class="band-block" id="destruction">
+  <div class="band-header">
+    <div>
+      <div class="band-eyebrow" style="color:var(--red)">Band 01 · Value Destruction</div>
+      <div class="band-org-name" style="color:var(--red)">Wells Fargo</div>
+      <div class="band-tagline">Between 2011 and 2016, Wells Fargo employees opened 3.5 million unauthorised accounts in customers' names. The cause was not rogue employees. It was a human system designed to make fear the operating mode at every level of the organisation.</div>
+    </div>
+    <div class="band-snapshot">
+      <div class="snap-label">The position</div>
+      <div class="snap-row"><span class="snap-key">Score band</span><span class="snap-val" style="color:var(--red)">0–30</span></div>
+      <div class="snap-row"><span class="snap-key">Period</span><span class="snap-val">2011–2016</span></div>
+      <div class="snap-row"><span class="snap-key">Regulatory fine</span><span class="snap-val">$185M (2016)</span></div>
+      <div class="snap-row"><span class="snap-key">Accounts affected</span><span class="snap-val">3.5M+</span></div>
+      <div class="snap-row"><span class="snap-key">Employees dismissed</span><span class="snap-val">5,300</span></div>
+    </div>
+  </div>
+
+  <div class="pillar-readings">
+    <div class="pr-card" style="border-color:rgba(224,92,58,.3)"><div class="pr-pillar" style="color:rgba(224,92,58,.65)">L1 Value Ledger</div><div class="pr-status" style="color:var(--red)">Fabricated</div><div class="pr-detail">Revenue generated through fraud, not human capital value creation. Return ratio was structurally false.</div></div>
+    <div class="pr-card" style="border-color:rgba(224,92,58,.3)"><div class="pr-pillar" style="color:rgba(224,92,58,.65)">L2 Talent Premium</div><div class="pr-status" style="color:var(--red)">Inverted</div><div class="pr-detail">High-pressure sales targets attracted and retained talent willing to compromise ethics. Selection was against the organisation's long-term interests.</div></div>
+    <div class="pr-card" style="border-color:rgba(224,92,58,.4)"><div class="pr-pillar" style="color:rgba(224,92,58,.65)">L3 Org Vitals</div><div class="pr-status" style="color:var(--red)">Critical — all six signals</div><div class="pr-detail">Fear Index at maximum. Retaliation against employees who raised concerns documented by OCC. HR Mirror failed entirely.</div></div>
+    <div class="pr-card" style="border-color:rgba(224,92,58,.3)"><div class="pr-pillar" style="color:rgba(224,92,58,.65)">L4 Human P&L</div><div class="pr-status" style="color:var(--red)">Negative</div><div class="pr-detail">The $185M fine, $3B DOJ settlement, and reputational destruction represented catastrophic negative Human P&L.</div></div>
+    <div class="pr-card" style="border-color:rgba(224,92,58,.3)"><div class="pr-pillar" style="color:rgba(224,92,58,.65)">L5 Balance Sheet</div><div class="pr-status" style="color:var(--red)">Culture Liability dominant</div><div class="pr-detail">Culture Liability was the defining balance sheet entry. Net Human Worth was deeply negative when adjusted for reputational and regulatory exposure.</div></div>
+  </div>
+
+  <div class="band-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">The OCC, CFPB, and LA City Attorney documented what the Wells Fargo sales culture had become: <em>branch employees were opening accounts without customer knowledge to meet daily quotas set by management</em>, because the consequence of missing those quotas was termination. Internal ethics reports and whistleblower accounts, documented in the subsequent congressional testimony, confirmed that employees who raised concerns about the practice were often the ones dismissed first.</p>
+      <p class="cb-text">Former CEO John Stumpf described the 3.5 million fraudulent accounts as "8 bad apples" in a workforce of 265,000. The Senate Banking Committee's response was unambiguous: this was a systemic management failure, not an individual one. <em>The culture produced the fraud. The HR system perpetuated it.</em></p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Wells Fargo is the defining Value Destruction case because it demonstrates that <em>a high-performing L2 Talent Premium score on paper can mask catastrophic L3 Org Vitals failure</em>. The organisation was hiring and retaining people — but into a system that destroyed their integrity as a condition of employment. The Fear Index signal was structurally maximised. The HR Mirror signal — HR's role as a corrective voice — was absent. The Culture Liability on the L5 Balance Sheet was accumulating for years before it became visible in the regulatory record. This is what 0–30 looks like in a $2 trillion bank.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that defined this band</div>
+      <div class="signal"><div class="signal-dot" style="background:var(--red)"></div><div class="signal-text"><em>Fear Index at maximum:</em> Employees reported being threatened with termination for missing daily sales quotas. The OCC found evidence of retaliation against employees who raised concerns internally — the Fear Index signal at its most destructive.</div></div>
+      <div class="signal"><div class="signal-dot" style="background:var(--red)"></div><div class="signal-text"><em>HR Mirror failure:</em> The HR function was not a corrective voice. Congressional testimony documented that HR processes were used to dismiss employees who raised ethics concerns, not to address the concerns themselves.</div></div>
+      <div class="signal"><div class="signal-dot" style="background:var(--red)"></div><div class="signal-text"><em>Execution Fidelity corrupted:</em> The organisation's stated values (putting customers first) and its actual execution (defrauding them) were in direct contradiction. The gap between stated values and operational reality — the Execution Fidelity signal — was complete.</div></div>
+      <div class="signal"><div class="signal-dot" style="background:var(--red)"></div><div class="signal-text"><em>Middle Layer Health failure:</em> Branch managers were required to enforce quotas they knew were unachievable through legitimate means. The middle layer transmitted pressure downward rather than intelligence upward.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BAND 2: VALUE NEUTRAL — General Motors (pre-bankruptcy) -->
+<div class="band-block" id="neutral">
+  <div class="band-header">
+    <div>
+      <div class="band-eyebrow" style="color:var(--lav)">Band 02 · Value Neutral</div>
+      <div class="band-org-name" style="color:rgba(165,180,252,.7)">General Motors</div>
+      <div class="band-tagline">Pre-bankruptcy GM (2005–2009) was not a failing organisation in the conventional sense. It had 250,000 employees, a century of institutional knowledge, and the world's largest automotive market share as recently as 2007. What it lacked was a human organism capable of generating return commensurate with that scale.</div>
+    </div>
+    <div class="band-snapshot">
+      <div class="snap-label">The position</div>
+      <div class="snap-row"><span class="snap-key">Score band</span><span class="snap-val" style="color:var(--lav)">31–50</span></div>
+      <div class="snap-row"><span class="snap-key">Period</span><span class="snap-val">2005–2009</span></div>
+      <div class="snap-row"><span class="snap-key">Peak employees</span><span class="snap-val">~250,000</span></div>
+      <div class="snap-row"><span class="snap-key">US market share lost</span><span class="snap-val">20 pts (1990–2009)</span></div>
+      <div class="snap-row"><span class="snap-key">Bankruptcy filing</span><span class="snap-val">June 2009</span></div>
+    </div>
+  </div>
+
+  <div class="pillar-readings">
+    <div class="pr-card" style="border-color:rgba(99,102,241,.22)"><div class="pr-pillar" style="color:rgba(99,102,241,.55)">L1 Value Ledger</div><div class="pr-status" style="color:var(--lav)">Breaking even</div><div class="pr-detail">Massive people investment generating marginal financial returns. Revenue per employee declining steadily across the decade.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.22)"><div class="pr-pillar" style="color:rgba(99,102,241,.55)">L2 Talent Premium</div><div class="pr-status" style="color:var(--lav)">Misaligned</div><div class="pr-detail">Deep engineering talent present but incentive systems rewarded volume and political alignment over quality and innovation.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.22)"><div class="pr-pillar" style="color:rgba(99,102,241,.55)">L3 Org Vitals</div><div class="pr-status" style="color:var(--lav)">Deteriorating</div><div class="pr-detail">Congressional testimony and academic case studies documented a bureaucratic culture where decisions required multiple layers of approval. Execution Fidelity was structurally compromised.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.22)"><div class="pr-pillar" style="color:rgba(99,102,241,.55)">L4 Human P&L</div><div class="pr-status" style="color:var(--lav)">Compressed</div><div class="pr-detail">Legacy benefit costs, early retirement packages, and a shrinking revenue base compressed Human Gross Margin to near zero by 2008.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.22)"><div class="pr-pillar" style="color:rgba(99,102,241,.55)">L5 Balance Sheet</div><div class="pr-status" style="color:var(--lav)">Skill Debt building</div><div class="pr-detail">Institutional Knowledge high, but Workforce Obsolescence Risk was growing rapidly. The asset and liability were in tension without resolution.</div></div>
+  </div>
+
+  <div class="band-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">The Congressional oversight hearings into GM's 2009 bankruptcy, combined with academic case studies from Harvard Business School and MIT's Sloan Management Review, documented a consistent pattern: <em>GM had the talent, the institutional knowledge, and the market history to remain competitive, but the organisational system could not translate those assets into timely, quality decisions.</em></p>
+      <p class="cb-text">The ignition switch crisis — in which a known engineering defect was not acted upon for over a decade — is the most clinically documented example. Internal documents revealed in the subsequent litigation showed that the defect was identified as early as 2004. The human system could not transmit the signal from the people who knew about it to the people empowered to act. This is not a talent failure. It is a structural Humac Score failure — breaking even on people investment while liabilities accumulate.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Value Neutral is the most dangerous band in the Humac Spectrum, because it <em>does not feel like a crisis from the inside</em>. The organisation is large. The people are capable. The institutional knowledge is real. What the 31–50 band actually represents is an organism that is consuming human capital without generating commensurate return — and because it is not visibly collapsing, the deterioration is invisible until it isn't. GM's L3 Org Vitals — particularly Execution Fidelity and Middle Layer Health — were failing while the organisation maintained the appearance of stability. The 20-point market share loss over two decades was the Humac Score expressing itself through the only language available to it: the P&L.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that defined this band</div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Execution Fidelity failure:</em> The ignition switch defect, known internally for ten years before public disclosure, is the clearest documented case of an organisation knowing something and being structurally unable to act on it.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Middle Layer Health compromised:</em> Multiple layers of management approval required for decisions that competitors resolved in single meetings. The middle layer was a friction generator, not a transmission belt.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Workforce Obsolescence Risk accumulating:</em> Legacy benefit structures and early retirement incentives were removing the highest-cost (and often highest-experience) employees, while the remaining workforce faced a competitive environment requiring rapid capability development.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>L1 Value Ledger declining steadily:</em> Revenue per employee and profitability per unit both fell across the decade. The Value Ledger ratio was compressing year-on-year without structural intervention.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BAND 3: VALUE GENERATING — Microsoft (Nadella 2014–2017) -->
+<div class="band-block" id="generating">
+  <div class="band-header">
+    <div>
+      <div class="band-eyebrow" style="color:var(--lav)">Band 03 · Value Generating</div>
+      <div class="band-org-name" style="color:var(--lav)">Microsoft</div>
+      <div class="band-tagline">Satya Nadella became CEO in February 2014. Microsoft's market capitalisation was $310 billion. By the end of 2017, it had grown to $660 billion — not because of new products, but because of what Nadella did to the human organism of a 130,000-person organisation first.</div>
+    </div>
+    <div class="band-snapshot">
+      <div class="snap-label">The transition</div>
+      <div class="snap-row"><span class="snap-key">Score band</span><span class="snap-val" style="color:var(--lav)">51–70</span></div>
+      <div class="snap-row"><span class="snap-key">Period</span><span class="snap-val">2014–2017</span></div>
+      <div class="snap-row"><span class="snap-key">Market cap (Feb 2014)</span><span class="snap-val">$310B</span></div>
+      <div class="snap-row"><span class="snap-key">Market cap (Dec 2017)</span><span class="snap-val">$660B</span></div>
+      <div class="snap-row"><span class="snap-key">Employees</span><span class="snap-val">~130,000</span></div>
+    </div>
+  </div>
+
+  <div class="pillar-readings">
+    <div class="pr-card" style="border-color:rgba(99,102,241,.28)"><div class="pr-pillar" style="color:var(--lav)">L1 Value Ledger</div><div class="pr-status" style="color:var(--lav)">Improving</div><div class="pr-detail">Revenue per employee increasing. Cloud transition unlocked higher-margin revenue streams. Value Ledger ratio moving from neutral to positive.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.28)"><div class="pr-pillar" style="color:var(--lav)">L2 Talent Premium</div><div class="pr-status" style="color:var(--lav)">Unlocking</div><div class="pr-detail">Stack ranking eliminated 2013. Talent Premium improving as high performers were no longer structurally disadvantaged by forced distribution.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.3)"><div class="pr-pillar" style="color:var(--lav)">L3 Org Vitals</div><div class="pr-status" style="color:var(--lav)">Rebuilding</div><div class="pr-detail">Growth mindset cultural shift documented in Nadella's public statements and internal communications. Fear Index declining from the Ballmer era's stack-ranking peak.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.28)"><div class="pr-pillar" style="color:var(--lav)">L4 Human P&L</div><div class="pr-status" style="color:var(--lav)">Positive and growing</div><div class="pr-detail">Operating income per employee grew substantially 2014–2017. Human Gross Margin expanding as cloud business scaled.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.28)"><div class="pr-pillar" style="color:var(--lav)">L5 Balance Sheet</div><div class="pr-status" style="color:var(--lav)">Net Human Worth recovering</div><div class="pr-detail">Culture Asset beginning to rebuild after the stack-ranking era. Institutional Knowledge retained through the transition — a key balance sheet advantage.</div></div>
+  </div>
+
+  <div class="band-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Stack ranking — Microsoft's version of Enron's rank-and-yank, documented extensively by Kurt Eichenwald's 2012 Vanity Fair investigation — was eliminated in November 2013, one month before Nadella was named CEO. The connection between the policy's removal and the cultural shift that followed is documented in Nadella's own book, "Hit Refresh," and corroborated by internal Microsoft communications disclosed in subsequent litigation.</p>
+      <p class="cb-text"><em>The growth mindset framework Nadella introduced was not a culture programme. It was an explicit intervention in the L3 Org Vitals pillar</em> — specifically in the Fear Index and Peer &amp; Recognition Culture signals that stack ranking had corrupted. Revenue growth from $86B in 2014 to $110B in 2018 followed the cultural intervention, not preceded it. The causal direction matters for the Humac reading.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Microsoft 2014–2017 is the defining Value Generating case because it shows an organisation <em>in active transition between bands</em>. The 51–70 range is not a stable position — it is either the entry point to Value Compounding or the early stage of a return to Value Neutral. What makes Microsoft's transition credible in Humac terms is that the L3 intervention preceded the financial results. Nadella fixed the organism first. The P&L followed. This is the correct sequence: <em>L3 Org Vitals improvement → L2 Talent Premium unlocking → L1 Value Ledger improvement → L4 Human P&L expansion → L5 Balance Sheet Net Human Worth accumulation.</em></div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that defined this band</div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Fear Index declining:</em> The elimination of stack ranking removed the structural mechanism that had made internal competition more rational than collaboration. The Fear Index signal began its recovery.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Peer &amp; Recognition Culture rebuilding:</em> The growth mindset framework explicitly repositioned failure as a learning signal rather than a career-ending event. Cross-team collaboration became structurally safer.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>L2 Talent Premium unlocking:</em> With stack ranking gone, high performers were no longer disadvantaged by being on strong teams. Talent Premium began to reflect actual performance rather than relative ranking.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Leadership Energy redirected:</em> Nadella's public repositioning of Microsoft's mission — from "a PC in every home" to "empowering every person on the planet" — was a Leadership Pulse signal that cascaded into how the organism directed its energy.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BAND 4: VALUE COMPOUNDING — Southwest Airlines -->
+<div class="band-block" id="compounding">
+  <div class="band-header">
+    <div>
+      <div class="band-eyebrow" style="color:var(--lav)">Band 04 · Value Compounding</div>
+      <div class="band-org-name" style="color:var(--lav)">Southwest Airlines</div>
+      <div class="band-tagline">Southwest has been profitable for 47 consecutive years before COVID — a record in the US airline industry. Every other major US carrier has filed for bankruptcy at least once. The difference is documented: Southwest's human organism generates compounding returns that its competitors cannot replicate by copying its business model.</div>
+    </div>
+    <div class="band-snapshot">
+      <div class="snap-label">The record</div>
+      <div class="snap-row"><span class="snap-key">Score band</span><span class="snap-val" style="color:var(--lav)">71–85</span></div>
+      <div class="snap-row"><span class="snap-key">Consecutive profitable years</span><span class="snap-val">47 (pre-COVID)</span></div>
+      <div class="snap-row"><span class="snap-key">Voluntarily furloughed in COVID</span><span class="snap-val">Zero</span></div>
+      <div class="snap-row"><span class="snap-key">Employee turnover vs industry</span><span class="snap-val">Consistently lower</span></div>
+      <div class="snap-row"><span class="snap-key">Customer satisfaction rank</span><span class="snap-val">Consistently top 3</span></div>
+    </div>
+  </div>
+
+  <div class="pillar-readings">
+    <div class="pr-card" style="border-color:rgba(99,102,241,.35)"><div class="pr-pillar" style="color:var(--lav)">L1 Value Ledger</div><div class="pr-status" style="color:var(--lav)">Compounding</div><div class="pr-detail">47 consecutive profitable years. Revenue per employee consistently above industry average. Value Ledger ratio among the strongest in the sector.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.35)"><div class="pr-pillar" style="color:var(--lav)">L2 Talent Premium</div><div class="pr-status" style="color:var(--lav)">Culture-selected</div><div class="pr-detail">Southwest hires for attitude, trains for skill — a documented hiring principle generating above-average Talent Premium from a workforce that stays longer and performs more consistently.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.38)"><div class="pr-pillar" style="color:var(--lav)">L3 Org Vitals</div><div class="pr-status" style="color:var(--lav)">Strong across all six</div><div class="pr-detail">Documented in Harvard Business School case studies: Psychological safety, peer recognition, leader visibility, and execution fidelity all measurably above industry norms.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.35)"><div class="pr-pillar" style="color:var(--lav)">L4 Human P&L</div><div class="pr-status" style="color:var(--lav)">Consistently positive</div><div class="pr-detail">Human Gross Margin positive for 47 consecutive years, including through events that bankrupted competitors. The Human P&L has proven recession-resistant.</div></div>
+    <div class="pr-card" style="border-color:rgba(99,102,241,.35)"><div class="pr-pillar" style="color:var(--lav)">L5 Balance Sheet</div><div class="pr-status" style="color:var(--lav)">Culture Asset dominant</div><div class="pr-detail">Institutional Knowledge and Culture Asset are the two dominant Balance Sheet entries. The decision not to furlough during COVID was a deliberate preservation of these assets.</div></div>
+  </div>
+
+  <div class="band-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">Harvard Business School's case studies on Southwest document a consistent pattern over five decades: <em>the culture that Herb Kelleher built was not a differentiator that competitors could copy by studying it</em>. United Airlines launched a low-cost subsidiary explicitly modelled on Southwest. It failed within two years. The difference was not the model — it was the organism.</p>
+      <p class="cb-text">The COVID-19 response is the most recent documented evidence. In 2020, every major US airline implemented mass layoffs. Southwest — with 54,000 employees — voluntarily furloughed zero people. CEO Gary Kelly stated publicly that Southwest's culture was a long-term asset that could not be rebuilt quickly after a mass layoff, and that <em>the short-term cost of retaining employees was lower than the long-term cost of losing the culture</em>. This is L5 Balance Sheet reasoning applied at the CEO level in a crisis.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">Southwest is in the Value Compounding band rather than Value Exceptional because the evidence, while strong across all five pillars, shows an organisation that has maintained its Humacity position rather than continuously extending it. The 2022 operational meltdown — when Southwest cancelled 16,700 flights over the holiday period due to technology and scheduling failures — revealed that <em>a strong L3 Org Vitals score does not compensate for underinvestment in operational systems at L1 and L4</em>. Value Compounding is sustainable. It is not invulnerable. The distinction matters.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that defined this band</div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Hire for attitude, train for skill:</em> Southwest's documented hiring principle is a direct L2 Talent Premium strategy — filtering for cultural alignment first, then investing in technical development. Turnover is consistently lower than industry average.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Leader visibility (Leadership Pulse):</em> Kelleher's documented practice of working alongside frontline staff, appearing at gates, and engaging employees directly is a Leadership Energy signal with a 50-year track record of effect.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>COVID decision as L5 Balance Sheet reasoning:</em> The decision to retain 54,000 employees through COVID at significant short-term cost is the most documented example of an executive team treating Culture Asset as a balance sheet entry worth protecting.</div></div>
+      <div class="signal"><div class="signal-dot"></div><div class="signal-text"><em>Peer &amp; Recognition Culture:</em> Harvard case studies document Southwest's "warrior spirit" culture as one where peer recognition is a structural feature of the operating environment, not an occasional programme.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- BAND 5: VALUE EXCEPTIONAL — NVIDIA -->
+<div class="band-block" id="exceptional">
+  <div class="band-header">
+    <div>
+      <div class="band-eyebrow" style="color:#c4b5fd">Band 05 · Value Exceptional</div>
+      <div class="band-org-name" style="color:#c4b5fd">NVIDIA</div>
+      <div class="band-tagline">In January 2023, NVIDIA had a market capitalisation of $360 billion. By June 2024, it had crossed $3 trillion — making it the most valuable company in the world. The product was chips. The organism that built, sold, and iterated on those chips is what the Humac Score would classify as Value Exceptional.</div>
+    </div>
+    <div class="band-snapshot">
+      <div class="snap-label">The position</div>
+      <div class="snap-row"><span class="snap-key">Score band</span><span class="snap-val" style="color:#c4b5fd">86–100</span></div>
+      <div class="snap-row"><span class="snap-key">Market cap Jan 2023</span><span class="snap-val">$360B</span></div>
+      <div class="snap-row"><span class="snap-key">Market cap Jun 2024</span><span class="snap-val">$3T+</span></div>
+      <div class="snap-row"><span class="snap-key">Revenue per employee</span><span class="snap-val">~$2M+ (FY2024)</span></div>
+      <div class="snap-row"><span class="snap-key">Employee count (2024)</span><span class="snap-val">~36,000</span></div>
+    </div>
+  </div>
+
+  <div class="pillar-readings">
+    <div class="pr-card" style="border-color:rgba(196,181,253,.4);background:rgba(99,102,241,.06)"><div class="pr-pillar" style="color:#c4b5fd">L1 Value Ledger</div><div class="pr-status" style="color:#c4b5fd">Exceptional</div><div class="pr-detail">~$2M+ revenue per employee. Among the highest in the technology sector — and rising. Value Ledger ratio in the top percentile globally.</div></div>
+    <div class="pr-card" style="border-color:rgba(196,181,253,.4);background:rgba(99,102,241,.06)"><div class="pr-pillar" style="color:#c4b5fd">L2 Talent Premium</div><div class="pr-status" style="color:#c4b5fd">Market-defining</div><div class="pr-detail">NVIDIA engineers are among the most competed-for in the industry. Talent density per headcount is extraordinary. The Talent Premium is structural.</div></div>
+    <div class="pr-card" style="border-color:rgba(196,181,253,.45);background:rgba(99,102,241,.07)"><div class="pr-pillar" style="color:#c4b5fd">L3 Org Vitals</div><div class="pr-status" style="color:#c4b5fd">Exceptional — documented</div><div class="pr-detail">Jensen Huang's "no-skip levels" management philosophy, documented in Bloomberg and Fortune profiles, creates direct leadership visibility across the entire organisation without middle layer distortion.</div></div>
+    <div class="pr-card" style="border-color:rgba(196,181,253,.4);background:rgba(99,102,241,.06)"><div class="pr-pillar" style="color:#c4b5fd">L4 Human P&L</div><div class="pr-status" style="color:#c4b5fd">Compounding rapidly</div><div class="pr-detail">Operating margin above 60% in FY2024. For every dollar spent on HR and compensation, the financial return is among the highest ever documented at this scale.</div></div>
+    <div class="pr-card" style="border-color:rgba(196,181,253,.4);background:rgba(99,102,241,.06)"><div class="pr-pillar" style="color:#c4b5fd">L5 Balance Sheet</div><div class="pr-status" style="color:#c4b5fd">Net Human Worth highest</div><div class="pr-detail">Institutional Knowledge, Org Learning Velocity, and Talent Equity are the dominant balance sheet entries. Culture Liability is near-zero. Net Human Worth is among the highest ever computed.</div></div>
+  </div>
+
+  <div class="band-body">
+    <div>
+      <div class="cb-label">What the record shows</div>
+      <p class="cb-text">NVIDIA's management architecture, documented extensively in Bloomberg, Fortune, and academic profiles of Jensen Huang, is built around a principle that directly addresses the Middle Layer Health signal: <em>no-skip levels</em>. Huang is reported to have approximately 60 direct reports. The logic, documented in multiple interviews, is that hierarchical layers between the CEO and the people doing the work create information distortion — the same failure mode that destroyed Nokia.</p>
+      <p class="cb-text">The financial results make the Humac case directly. With approximately 36,000 employees generating $60B+ in revenue and 60%+ operating margins in FY2024, NVIDIA's Value Ledger ratio is extraordinary. But the more telling number is the Glassdoor CEO approval rating, which has remained above 95% for multiple consecutive years — a direct proxy for the Fear Index and Leadership Pulse signals in the absence of a formal Org Vitals assessment.</p>
+      <div class="humac-reading">
+        <div class="hr-label">The Humac Reading</div>
+        <div class="hr-text">NVIDIA is the Value Exceptional case because it represents something rare: <em>all five pillars reading strong simultaneously, at scale, over a sustained period</em>. Most organisations that achieve exceptional L1 (Value Ledger) and L4 (Human P&L) results do so by compromising L3 (Org Vitals) — high pressure, long hours, fear-adjacent performance culture. NVIDIA's documented management approach goes in the opposite direction: L3 is the foundation, not the sacrifice. The 60-direct-reports management model is a structural intervention against Middle Layer Health decay. The financial results are its output. This is what 86–100 looks like when it compounds over decades.</div>
+      </div>
+    </div>
+    <div>
+      <div class="cb-label">The Humac signals that defined this band</div>
+      <div class="signal"><div class="signal-dot" style="background:#c4b5fd"></div><div class="signal-text"><em>No-skip levels (Middle Layer Health):</em> Jensen Huang's documented practice of having ~60 direct reports eliminates the middle layer distortion that destroyed Nokia. Information travels from the people doing the work directly to the person making decisions.</div></div>
+      <div class="signal"><div class="signal-dot" style="background:#c4b5fd"></div><div class="signal-text"><em>Leadership Energy — mission-driven:</em> The GPU-to-AI platform transition, executed over a decade before the market recognised it, required sustained leadership energy in a direction that was not yet validated by revenue. Documented in Huang's public communications from 2012 onwards.</div></div>
+      <div class="signal"><div class="signal-dot" style="background:#c4b5fd"></div><div class="signal-text"><em>Org Learning Velocity (L5 Asset):</em> NVIDIA's documented ability to execute platform-level pivots — from gaming GPUs to data centre to AI accelerators — reflects an Institutional Knowledge depth and learning velocity that compounds across cycles.</div></div>
+      <div class="signal"><div class="signal-dot" style="background:#c4b5fd"></div><div class="signal-text"><em>L1 Value Ledger at scale:</em> ~$2M+ revenue per employee at 36,000 headcount is the Value Exceptional signal in its most quantified form. People treated as a compounding asset class, not a managed cost. The return per person is extraordinary and growing.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<footer class="footer">
+  <div class="footer-left">Humacity · The Humac Spectrum · humacity.com</div>
+  <div class="footer-right">All organisations cited from public record only · 2026</div>
+</footer>
+
+</body>
+</html>
