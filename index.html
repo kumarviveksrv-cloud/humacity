@@ -1,667 +1,823 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Humacity — The Intellectual Foundation | Virorah Vantage</title>
-<meta name="description" content="Humacity is the quality of human capital in an organisation — its vitality, capability, and financial contribution. The concept behind the Humac Score.">
-<link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="vantage-theme.css">
+<html lang="en"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0YBV1X9HLX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0YBV1X9HLX');
+</script>
+<meta charset="utf-8"/>
+<link rel="manifest" href="manifest.json"/>
+<meta name="theme-color" content="#6366f1"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Humacity"/>
+<link rel="apple-touch-icon" href="favicon.png"/>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="shortcut icon" href="favicon.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<title>Humacity, The Quality of Human Capital</title>
+<meta name="description" content="Humacity: the quality of human capital in an organisation. Five pillars. One Humac Score. The philosophical foundation of the Virorah Universe."/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet"/>
 <style>
-/* ── PAGE VARIABLES ────────────────────────────────────────────────── */
-:root {
-  --bg: #050410;
-  --bg2: rgba(13,11,30,.7);
-  --bg3: #0d0b1e;
-  --accent: #6366f1;
-  --violet: #7c3aed;
-  --lav: #a5b4fc;
-  --text: #f4f3ff;
-  --muted: rgba(244,243,255,.65);
-  --dim: rgba(244,243,255,.32);
-  --border: rgba(99,102,241,.15);
-  --mono: 'JetBrains Mono', monospace;
-  --stat: 'Space Grotesk', sans-serif;
+:root{
+  --bg:#050410;--bg2:#0d0b1e;
+  --accent:#6366f1;--violet:#7c3aed;
+  --lav:#a5b4fc;--plum:#c4b5fd;
+  --text:#f4f3ff;--muted:rgba(244,243,255,.65);--dim:rgba(244,243,255,.32);
+  --border:rgba(99,102,241,.18);
+  --font:'Plus Jakarta Sans',sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --display:'Bricolage Grotesque',sans-serif;
+  --serif:'Cormorant Garamond',serif;
+  --stat:'Space Grotesk',sans-serif;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image:
-    linear-gradient(rgba(99,102,241,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99,102,241,.025) 1px, transparent 1px);
-  background-size: 52px 52px;
-  pointer-events: none; z-index: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(rgba(99,102,241,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(99,102,241,.02) 1px,transparent 1px);
+  background-size:52px 52px;pointer-events:none;z-index:0
 }
 
-/* ── NAV ──────────────────────────────────────────────────────────── */
-.h-nav {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 40px;
-  background: rgba(5,4,16,.92);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;
+  background:rgba(5,4,16,.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(99,102,241,.08);
 }
-.h-nav-brand {
-  display: flex; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: .6rem; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--lav); text-decoration: none;
-}
-.h-nav-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-.h-nav-back {
-  font-family: var(--mono); font-size: .58rem; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--dim); text-decoration: none;
-  transition: color .15s;
-}
-.h-nav-back:hover { color: var(--lav); }
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.nav-wordmark{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text);font-weight:500}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--lav)}
+.nav-cta{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:8px;background:rgba(99,102,241,.12);color:var(--lav);border:1px solid rgba(99,102,241,.22);text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:rgba(99,102,241,.22);border-color:var(--accent)}
 
-/* ── HERO ─────────────────────────────────────────────────────────── */
-.hero {
-  padding: 80px 48px 64px;
-  max-width: 1040px; margin: 0 auto;
-  position: relative; z-index: 1;
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:120px 48px 80px;
+  position:relative;z-index:1;overflow:hidden;
 }
-.hero-eyebrow {
-  font-family: var(--mono); font-size: .56rem; letter-spacing: .24em;
-  text-transform: uppercase; color: var(--lav); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
+.hero-orb{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+#orbCanvas{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,90vw);height:min(700px,90vw);opacity:.92;z-index:1}
+.hero-content{position:relative;z-index:2}
+.hero-intro{
+  padding:60px 48px 80px;text-align:center;
+  position:relative;z-index:1;
+  background:linear-gradient(180deg,rgba(5,4,16,0) 0%,var(--bg) 10%);
 }
-.hero-eyebrow::before { content: ''; width: 22px; height: 1px; background: rgba(99,102,241,.4); }
-.hero-pronunciation {
-  font-family: var(--mono); font-size: .75rem; color: var(--dim);
-  margin-bottom: 18px; letter-spacing: .04em;
+.hero-word{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(5rem,12vw,9rem);
+  line-height:.92;letter-spacing:-.02em;
+  margin-bottom:16px;
+  background:linear-gradient(135deg,#a5b4fc 0%,#6366f1 30%,#7c3aed 55%,#c4b5fd 80%,#a5b4fc 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.6rem, 7.5vw, 6.4rem);
-  font-weight: 700; font-style: italic;
-  line-height: .95; letter-spacing: -.01em;
-  color: var(--text); margin-bottom: 28px;
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--lav);
+  margin-bottom:20px;display:flex;align-items:center;gap:12px;justify-content:center
 }
-.hero-title em {
-  font-style: normal;
-  background: linear-gradient(135deg, #f4f3ff 30%, #a5b4fc 80%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:rgba(99,102,241,.3)}
+.hero-pronunciation{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--dim);margin-bottom:28px}
+.hero-pronunciation span{color:var(--lav)}
+.hero-def{
+  font-family:var(--serif);font-size:clamp(1.1rem,2.4vw,1.5rem);
+  font-style:italic;font-weight:400;
+  color:var(--muted);line-height:1.7;max-width:620px;margin:0 auto 40px
 }
-.hero-def {
-  background: rgba(99,102,241,.06);
-  border: 1px solid rgba(99,102,241,.2);
-  border-left: 3px solid var(--accent);
-  border-radius: 12px;
-  padding: 22px 26px;
-  max-width: 640px;
-  margin-bottom: 36px;
+.hero-def em{color:var(--text);font-style:normal;font-weight:600}
+.hero-etymology{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
+  color:rgba(165,180,252,.65);margin-bottom:48px;
+  display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap
 }
-.hero-def-label {
-  font-family: var(--mono); font-size: .52rem; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--lav); margin-bottom: 10px;
+.etym-part{display:flex;align-items:center;gap:6px}
+.etym-word{color:var(--dim)}
+.etym-meaning{color:rgba(99,102,241,.8)}
+.etym-sep{color:rgba(99,102,241,.5)}
+.scroll-hint{
+  font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(99,102,241,.6);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:float 2.5s ease-in-out infinite
 }
-.hero-def-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem; font-weight: 500; color: var(--text); line-height: 1.5;
-  margin-bottom: 10px;
-}
-.hero-def-note {
-  font-family: var(--mono); font-size: .65rem; color: var(--dim); line-height: 1.6;
-}
-.hero-def-note em { color: var(--lav); font-style: normal; }
+.scroll-hint svg{opacity:.6}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 
-/* ── DIVIDER ──────────────────────────────────────────────────────── */
-.divider {
-  width: 100%; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99,102,241,.2), transparent);
+/* SECTIONS */
+.section{padding:100px 48px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.section-label{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--lav);margin-bottom:16px;
+  display:flex;align-items:center;gap:10px
 }
+.section-label::before{content:'';width:22px;height:1px;background:rgba(99,102,241,.4)}
+.section-title{
+  font-family:var(--display);font-size:clamp(1.8rem,3.2vw,2.6rem);
+  font-weight:700;letter-spacing:-.02em;
+  color:var(--text);line-height:1.1;margin-bottom:14px
+}
+.section-sub{font-size:.92rem;color:var(--muted);line-height:1.8;max-width:580px}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(99,102,241,.2),transparent);margin:0 auto}
 
-/* ── SHARED SECTION ───────────────────────────────────────────────── */
-.section {
-  padding: 64px 48px;
-  max-width: 1040px; margin: 0 auto;
-  position: relative; z-index: 1;
+/* WORD SECTION */
+.word-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px;align-items:start}
+@media(max-width:800px){.word-grid{grid-template-columns:1fr}}
+.word-kinship{margin-top:40px}
+.kinship-label{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:16px}
+.kinship-words{display:flex;flex-wrap:wrap;gap:10px}
+.kinship-pill{
+  font-family:var(--mono);font-size:.7rem;padding:6px 14px;
+  border-radius:20px;border:1px solid rgba(99,102,241,.25);color:var(--dim);
+  display:flex;align-items:center;gap:6px
 }
-.section-eyebrow {
-  font-family: var(--mono); font-size: .54rem; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--lav); margin-bottom: 12px;
-  display: flex; align-items: center; gap: 10px;
-}
-.section-eyebrow::before { content: ''; width: 18px; height: 1px; background: rgba(99,102,241,.4); }
-.section-title {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  font-weight: 700; letter-spacing: -.02em;
-  color: var(--text); line-height: 1.1; margin-bottom: 14px;
-}
-.section-sub {
-  font-size: .92rem; color: var(--muted); line-height: 1.8;
-  max-width: 560px; margin-bottom: 40px;
-}
+.kinship-pill span{color:var(--lav)}
 
-/* ── ACITY FAMILY ─────────────────────────────────────────────────── */
-.acity-row {
-  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; margin-bottom: 16px;
+.usage-block{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:14px;padding:24px 28px;margin-bottom:16px;
+  border-left:3px solid rgba(99,102,241,.4)
 }
-.acity-chip {
-  padding: 10px 18px;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-}
-.acity-chip.active {
-  background: linear-gradient(135deg, rgba(99,102,241,.15), rgba(99,102,241,.08));
-  border-color: rgba(99,102,241,.45);
-  box-shadow: 0 0 20px rgba(99,102,241,.12);
-}
-.acity-word {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 600; letter-spacing: -.01em;
-  color: var(--muted);
-}
-.acity-chip.active .acity-word { color: var(--lav); }
-.acity-meaning {
-  font-family: var(--mono); font-size: .48rem;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--dim);
-}
-.acity-chip.active .acity-meaning { color: rgba(165,180,252,.6); }
-.acity-note {
-  font-size: .82rem; color: var(--muted); line-height: 1.75; margin-top: 20px;
-  max-width: 600px;
-}
+.usage-context{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.usage-text{font-family:var(--serif);font-size:1.05rem;color:var(--text);line-height:1.65;font-style:italic}
+.usage-text em{font-style:normal;color:var(--plum);font-weight:600}
 
-/* ── CLARITY GRID ─────────────────────────────────────────────────── */
-.clarity-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px;
-}
-@media(max-width:680px){ .clarity-grid { grid-template-columns: 1fr; } }
-.clarity-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px 26px;
-}
-.clarity-card.is-yes { border-color: rgba(99,102,241,.3); }
-.clarity-card.is-no { border-color: rgba(99,102,241,.1); }
-.clarity-marker {
-  font-family: var(--mono); font-size: .52rem; letter-spacing: .16em;
-  text-transform: uppercase; margin-bottom: 16px;
-  display: flex; align-items: center; gap: 6px;
-}
-.clarity-card.is-yes .clarity-marker { color: var(--lav); }
-.clarity-card.is-no .clarity-marker { color: var(--dim); }
-.clarity-list { display: flex; flex-direction: column; gap: 10px; }
-.clarity-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: .85rem; color: var(--muted); line-height: 1.55;
-}
-.clarity-item-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  flex-shrink: 0; margin-top: 6px;
-}
-.is-yes .clarity-item-dot { background: var(--accent); }
-.is-no .clarity-item-dot { background: rgba(99,102,241,.3); }
+/* CLARITY */
+.not-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+@media(max-width:700px){.not-grid{grid-template-columns:1fr}}
+.not-card{background:var(--bg2);border:1px solid rgba(99,102,241,.08);border-radius:14px;padding:22px 24px}
+.not-card.is-not{border-color:rgba(224,92,58,.12)}
+.not-card.is{border-color:rgba(99,102,241,.18)}
+.not-label{font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.not-card.is-not .not-label{color:rgba(224,92,58,.6)}
+.not-card.is .not-label{color:var(--lav)}
+.not-text{font-size:.84rem;color:var(--muted);line-height:1.65}
 
-/* ── WHY NOW ──────────────────────────────────────────────────────── */
-.why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 32px; }
-@media(max-width:760px){ .why-grid { grid-template-columns: 1fr; } }
-.why-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 26px 24px;
-  position: relative; overflow: hidden;
+/* WHY NOW */
+.why-blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:48px}
+@media(max-width:900px){.why-blocks{grid-template-columns:1fr}}
+.why-block{
+  background:var(--bg2);border:1px solid rgba(99,102,241,.08);
+  border-radius:16px;padding:28px 24px;
+  position:relative;overflow:hidden;transition:border-color .2s
 }
-.why-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-.why-num {
-  font-family: var(--stat);
-  font-size: 2.8rem; font-weight: 700; letter-spacing: -.04em;
-  color: rgba(99,102,241,.12); line-height: 1; margin-bottom: 12px;
-}
-.why-title {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: .95rem; font-weight: 700;
-  color: var(--text); margin-bottom: 8px; line-height: 1.3;
-}
-.why-body { font-size: .8rem; color: var(--muted); line-height: 1.7; }
+.why-block:hover{border-color:rgba(99,102,241,.25)}
+.why-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.why-num{font-family:var(--stat);font-size:2.6rem;font-weight:700;letter-spacing:-.04em;color:rgba(99,102,241,.12);line-height:1;margin-bottom:14px}
+.why-title{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:8px}
+.why-text{font-size:.82rem;color:var(--dim);line-height:1.7}
 
-/* ── FIVE PILLARS ─────────────────────────────────────────────────── */
-.pillars-intro {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
-  font-weight: 500; font-style: italic;
-  color: rgba(244,243,255,.6);
-  line-height: 1.5; max-width: 680px;
-  margin-bottom: 40px;
+/* FIVE PILLARS */
+.pillars{margin-top:48px}
+.pillar-item{
+  display:grid;grid-template-columns:72px 1fr auto;
+  gap:20px;padding:28px 0;border-bottom:1px solid rgba(99,102,241,.07);align-items:start
 }
-.pillars-intro strong {
-  font-style: normal; color: var(--text);
+.pillar-item:last-child{border-bottom:none}
+.pillar-code{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--lav);
+  background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.25);
+  border-radius:6px;padding:4px 8px;text-align:center;
+  margin-top:4px;white-space:nowrap
 }
-.pillar-stack { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-.pillar-row {
-  display: grid;
-  grid-template-columns: 56px 28px 1fr auto;
-  align-items: center; gap: 18px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px 24px;
-  transition: border-color .2s;
+.pillar-name{
+  font-family:var(--display);font-size:1.05rem;font-weight:700;
+  letter-spacing:-.01em;color:var(--text);margin-bottom:8px
 }
-.pillar-row:hover { border-color: rgba(99,102,241,.35); }
-.pillar-label {
-  font-family: var(--mono); font-size: .65rem; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--lav);
-  background: rgba(99,102,241,.1);
-  border: 1px solid rgba(99,102,241,.25);
-  border-radius: 4px; padding: 3px 7px;
-  text-align: center; white-space: nowrap;
+.pillar-text{font-size:.84rem;color:var(--dim);line-height:1.72}
+.pillar-text em{color:var(--text);font-style:normal;font-weight:600}
+.pillar-text .italic-line{
+  font-family:var(--serif);font-size:.98rem;font-style:italic;
+  color:var(--lav);display:block;margin-bottom:10px;line-height:1.7
 }
-.pillar-connector {
-  width: 100%; display: flex; justify-content: center;
-}
-.pillar-connector::after {
-  content: ''; display: block;
-  width: 1px; height: 100%; min-height: 20px;
-  background: linear-gradient(to bottom, rgba(99,102,241,.4), rgba(99,102,241,.1));
-}
-.pillar-body {}
-.pillar-name {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 1rem; font-weight: 700; letter-spacing: -.01em;
-  color: var(--text); margin-bottom: 4px;
-}
-.pillar-desc {
-  font-size: .8rem; color: var(--muted); line-height: 1.55;
-}
-.pillar-weight {
-  font-family: var(--stat);
-  font-size: 1.1rem; font-weight: 700; letter-spacing: -.03em;
-  color: rgba(99,102,241,.5); white-space: nowrap; text-align: right;
+.pillar-weight{
+  font-family:var(--stat);font-size:1.3rem;font-weight:700;
+  letter-spacing:-.03em;color:rgba(99,102,241,.4);
+  white-space:nowrap;padding-top:4px;text-align:right
 }
 
-/* ── HCI NOTE ─────────────────────────────────────────────────────── */
-.hci-note {
-  background: rgba(99,102,241,.05);
-  border: 1px solid rgba(99,102,241,.18);
-  border-radius: 10px;
-  padding: 16px 20px;
-  display: flex; align-items: flex-start; gap: 14px;
-  margin-bottom: 32px;
+/* HUMAC SCORE CALLOUT */
+.score-callout{
+  background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(99,102,241,.05));
+  border:1px solid rgba(99,102,241,.25);border-radius:16px;
+  padding:32px 36px;margin-top:40px;
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center
 }
-.hci-badge {
-  font-family: var(--mono); font-size: .52rem; letter-spacing: .14em;
-  text-transform: uppercase; color: var(--lav);
-  background: rgba(99,102,241,.12);
-  border: 1px solid rgba(99,102,241,.3);
-  border-radius: 4px; padding: 3px 7px;
-  flex-shrink: 0; margin-top: 2px;
-}
-.hci-text { font-size: .82rem; color: var(--muted); line-height: 1.65; }
-.hci-text strong { color: var(--text); }
-
-/* ── SCORE BANDS ──────────────────────────────────────────────────── */
-.bands-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; margin-top: 32px; }
-@media(max-width:760px){ .bands-grid { grid-template-columns: 1fr 1fr; } }
-@media(max-width:480px){ .bands-grid { grid-template-columns: 1fr; } }
-.band-card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 16px;
-  text-align: center;
-}
-.band-range {
-  font-family: var(--stat);
-  font-size: 1.5rem; font-weight: 700; letter-spacing: -.03em;
-  color: var(--lav); line-height: 1; margin-bottom: 6px;
-}
-.band-name {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: .78rem; font-weight: 700; color: var(--text);
-  margin-bottom: 6px; line-height: 1.2;
-}
-.band-desc {
-  font-family: var(--mono); font-size: .5rem; letter-spacing: .05em;
-  color: var(--dim); line-height: 1.55;
+@media(max-width:640px){.score-callout{grid-template-columns:1fr}}
+.sc-left{}
+.sc-label{font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lav);margin-bottom:10px}
+.sc-title{font-family:var(--display);font-size:1.2rem;font-weight:700;letter-spacing:-.01em;color:var(--text);margin-bottom:8px}
+.sc-sub{font-size:.83rem;color:var(--muted);line-height:1.65}
+.sc-bands{display:flex;gap:6px;flex-wrap:wrap}
+.sc-band{
+  font-family:var(--mono);font-size:.5rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:4px 10px;border-radius:4px;
+  background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.18);color:var(--dim)
 }
 
-/* ── MANIFESTO ────────────────────────────────────────────────────── */
-.manifesto {
-  padding: 64px 48px;
-  background: linear-gradient(135deg, rgba(99,102,241,.05), rgba(99,102,241,.02));
-  border-top: 1px solid rgba(99,102,241,.1);
-  border-bottom: 1px solid rgba(99,102,241,.1);
-  text-align: center;
-  position: relative; z-index: 1;
+/* MANIFESTO */
+.manifesto{
+  padding:120px 48px;text-align:center;
+  background:linear-gradient(180deg,transparent,rgba(99,102,241,.04),transparent);
+  position:relative;z-index:1
 }
-.manifesto-inner { max-width: 700px; margin: 0 auto; }
-.manifesto-eyebrow {
-  font-family: var(--mono); font-size: .54rem; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--lav); margin-bottom: 20px;
+.manifesto-inner{max-width:720px;margin:0 auto}
+.m-line{
+  font-family:var(--serif);
+  font-size:clamp(1.25rem,2.8vw,2rem);
+  font-weight:500;font-style:italic;
+  color:rgba(165,180,252,.22);line-height:1.55;
+  transition:color .45s;padding:5px 0;cursor:default
 }
-.manifesto-lines {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
-  font-weight: 600; line-height: 1.45;
-  color: var(--text);
-}
-.manifesto-lines .fade { color: var(--dim); }
-.manifesto-lines .accent { color: var(--lav); font-style: italic; }
+.m-line.lit{color:var(--text);font-style:italic}
+.m-line .gold{color:var(--plum)}
+.m-line .mag{color:var(--lav)}
 
-/* ── CTA ──────────────────────────────────────────────────────────── */
-.cta-section { padding: 64px 48px; max-width: 1040px; margin: 0 auto; position: relative; z-index: 1; }
-.cta-block {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 48px;
-  text-align: center;
-  position: relative; overflow: hidden;
+/* FOOTER CTA — informational only, no buttons */
+.rf-cta{padding:80px 48px;text-align:center;position:relative;z-index:1}
+.rf-cta-inner{max-width:600px;margin:0 auto}
+.rf-cta-eyebrow{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lav);margin-bottom:16px}
+.rf-cta-title{
+  font-family:var(--display);font-size:clamp(1.6rem,3.2vw,2.4rem);
+  font-weight:700;letter-spacing:-.02em;
+  color:var(--text);line-height:1.15;margin-bottom:14px
 }
-.cta-block::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-}
-.cta-eyebrow {
-  font-family: var(--mono); font-size: .54rem; letter-spacing: .2em;
-  text-transform: uppercase; color: var(--lav); margin-bottom: 14px;
-}
-.cta-title {
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 700; letter-spacing: -.02em;
-  color: var(--text); margin-bottom: 12px;
-}
-.cta-sub { font-size: .88rem; color: var(--muted); line-height: 1.7; max-width: 440px; margin: 0 auto 28px; }
-.cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: .8rem; font-weight: 700; letter-spacing: -.01em;
-  padding: 14px 28px; border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), var(--violet));
-  color: #fff; text-decoration: none;
-  box-shadow: 0 4px 20px rgba(99,102,241,.35);
-  transition: all .2s;
-}
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(99,102,241,.45); }
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: .8rem; font-weight: 600;
-  padding: 14px 28px; border-radius: 10px;
-  background: transparent; color: var(--muted);
-  border: 1px solid rgba(99,102,241,.2); text-decoration: none;
-  transition: all .2s;
-}
-.btn-outline:hover { border-color: rgba(99,102,241,.4); color: var(--text); }
+.rf-cta-sub{font-size:.9rem;color:var(--muted);line-height:1.75;margin-bottom:0}
 
-/* ── FOOTER ───────────────────────────────────────────────────────── */
-.h-footer {
-  padding: 26px 48px;
-  border-top: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-  position: relative; z-index: 1;
+.footer{
+  padding:36px 48px;border-top:1px solid rgba(99,102,241,.08);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;position:relative;z-index:1
 }
-.h-footer-left { font-family: var(--mono); font-size: .54rem; letter-spacing: .08em; color: var(--dim); }
-.h-footer-right { font-family: var(--mono); font-size: .54rem; color: rgba(99,102,241,.22); }
+.footer-left{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;color:var(--dim)}
+.footer-left b{color:var(--plum)}
+.footer-right{font-family:var(--mono);font-size:.58rem;color:rgba(99,102,241,.28);letter-spacing:.06em}
+
+#starfieldCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
 @media(max-width:600px){
-  .h-nav { padding: 12px 20px; }
-  .hero { padding: 56px 24px 48px; }
-  .section { padding: 52px 24px; }
-  .manifesto { padding: 52px 24px; }
-  .cta-section { padding: 52px 24px; }
-  .h-footer { padding: 20px 24px; flex-direction: column; gap: 6px; text-align: center; }
+  .nav{padding:14px 20px}.nav-links{display:none}
+  .section{padding:72px 24px}
+  .manifesto{padding:80px 24px}
+  .rf-cta{padding:72px 24px}
+  .footer{padding:28px 24px}
+  .hero-intro{padding:40px 24px 60px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="h-nav">
-  <a href="dashboard.html" class="h-nav-brand">
-    <div class="h-nav-dot"></div>
-    Humacity
+<canvas id="ambientCanvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:0.6"></canvas>
+
+<nav class="nav">
+  <a href="#" class="nav-brand" style="display:flex;align-items:center;gap:11px;text-decoration:none">
+    <img src="favicon.png" width="34" height="34" style="border-radius:8px;flex-shrink:0;display:block;border:1px solid rgba(99,102,241,0.22)" alt="H"/>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <span style="font-family:var(--mono);font-size:.44rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(165,180,252,.4);line-height:1">A Virorah Philosophy</span>
+      <div style="font-family:var(--display);font-size:.95rem;font-weight:700;color:#f4f3ff;letter-spacing:-.01em;line-height:1.1">Humacity</div>
+    </div>
   </a>
-  <a href="dashboard.html" class="h-nav-back">← Dashboard</a>
+  <div class="nav-links">
+    <a href="#the-word">The Word</a>
+    <a href="#why-now">Why Now</a>
+    <a href="#the-five">The Five Pillars</a>
+    <a href="#manifesto">Manifesto</a>
+  </div>
+  <a href="humacity-research.html" class="nav-cta">Research &rarr;</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow">The Concept</div>
-  <div class="hero-pronunciation">/hjuː · mas · ɪ · ti/ &nbsp;·&nbsp; noun</div>
-  <h1 class="hero-title">The quality of<br><em>human capital.</em></h1>
-  <div class="hero-def">
-    <div class="hero-def-label">Definition</div>
-    <div class="hero-def-text">The quality of human capital in an organisation — its vitality, capability, and financial contribution. Not a score. Not a rating. A state of being.</div>
-    <div class="hero-def-note"><em>humanus</em> (Latin: human) + <em>-acity</em> (suffix: a fundamental quality or state) = Humacity</div>
+<section class="hero">
+  <div class="hero-orb" id="heroOrb">
+    <canvas id="starfieldCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+    <canvas id="orbCanvas"></canvas>
+  </div>
+  <div class="hero-content">
+    <div class="hero-word">Humacity</div>
+  </div>
+</section>
+
+<div class="hero-intro">
+  <div class="hero-eyebrow">A new concept for a very old problem</div>
+  <div class="hero-pronunciation" style="margin:16px 0">
+    /hjuː&middot;<span>mas</span>&middot;ɪ&middot;ti/ &nbsp;&middot;&nbsp; noun
+  </div>
+  <p class="hero-def" style="margin-bottom:24px">
+    The <em>quality</em> of human capital in an organisation,<br>
+    its vitality, capability, and financial contribution.<br>
+    Not a score. Not a rating. <em>A state of being.</em>
+  </p>
+  <div class="hero-etymology" style="margin-bottom:32px">
+    <div class="etym-part"><span class="etym-word">humanus</span><span class="etym-meaning">(Latin: human)</span></div>
+    <span class="etym-sep">+</span>
+    <div class="etym-part"><span class="etym-word">-acity</span><span class="etym-meaning">(suffix: quality, state of)</span></div>
+    <span class="etym-sep">=</span>
+    <div class="etym-part"><span class="etym-word" style="color:var(--lav)">Humacity</span></div>
+  </div>
+  <div class="scroll-hint">
+    <svg width="16" height="20" viewBox="0 0 16 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="1" width="6" height="10" rx="3"/><path d="M8 14v5M5 16l3 3 3-3"/></svg>
+    Scroll to explore
   </div>
 </div>
 
 <div class="divider"></div>
 
-<!-- THE WORD -->
-<div class="section">
-  <div class="section-eyebrow">The Word</div>
-  <h2 class="section-title">It belongs in the same family.</h2>
-  <p class="section-sub">The -acity suffix describes a fundamental quality of something. Not a measurement, not a score — a state. Humacity names what every organisation has always had but never had a word for.</p>
+<section class="section" id="the-word">
+  <div class="section-label">The Word</div>
+  <h2 class="section-title">It belongs in the same family<br>as tenacity. Audacity. Veracity.</h2>
+  <p class="section-sub">The -acity suffix describes a fundamental quality of something — not a measurement, not a score, but a state. Humacity names what every organisation has always had but never had a word for.</p>
 
-  <div class="acity-row">
-    <div class="acity-chip"><div class="acity-word">Tenacity</div><div class="acity-meaning">persistence</div></div>
-    <div class="acity-chip"><div class="acity-word">Audacity</div><div class="acity-meaning">boldness</div></div>
-    <div class="acity-chip"><div class="acity-word">Veracity</div><div class="acity-meaning">truth</div></div>
-    <div class="acity-chip"><div class="acity-word">Vivacity</div><div class="acity-meaning">liveliness</div></div>
-    <div class="acity-chip"><div class="acity-word">Capacity</div><div class="acity-meaning">ability</div></div>
-    <div class="acity-chip active"><div class="acity-word">Humacity</div><div class="acity-meaning">human quality</div></div>
-  </div>
-
-  <p class="acity-note">Finance has <em>liquidity</em> — the quality of convertibility. Law has <em>veracity</em> — the quality of truth. Leadership has <em>tenacity</em> — the quality of persistence under pressure. HR has always had the concept. It never had the word. Humacity fills that gap.</p>
-</div>
-
-<div class="divider"></div>
-
-<!-- CLARITY -->
-<div class="section">
-  <div class="section-eyebrow">Clarity</div>
-  <h2 class="section-title">What Humacity is. What it is not.</h2>
-  <p class="section-sub">These distinctions matter. They determine whether the concept holds up in a boardroom — or collapses into another HR framework nobody reads.</p>
-
-  <div class="clarity-grid">
-    <div class="clarity-card is-yes">
-      <div class="clarity-marker">&#x2713; &nbsp; Humacity is</div>
-      <div class="clarity-list">
-        <div class="clarity-item"><div class="clarity-item-dot"></div>The philosophical meta-layer that runs through every people decision</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>The language that connects HR to finance</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>A state of being that can improve, deteriorate, be built, and be lost</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>Applicable to every organisation that employs people — a five-person startup and a 50,000-person enterprise both have a Humacity position</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>Always moving — either improving or deteriorating. Never static</div>
+  <div class="word-grid">
+    <div>
+      <p style="font-size:.9rem;color:var(--dim);line-height:1.85;margin-bottom:24px">
+        Finance has <em style="color:var(--text);font-style:normal">liquidity</em> — the quality of an asset's convertibility.<br>
+        Law has <em style="color:var(--text);font-style:normal">veracity</em> — the quality of truth in testimony.<br>
+        Leadership has <em style="color:var(--text);font-style:normal">tenacity</em> — the quality of persistence under pressure.<br><br>
+        HR has always had the concept. It never had the word.
+      </p>
+      <p style="font-size:.9rem;color:var(--dim);line-height:1.85;margin-bottom:28px">
+        <em style="color:var(--lav);font-style:normal">Humacity</em> fills that gap. It names the quality of human capital — not its quantity, not its cost, not its sentiment score. Its <em style="color:var(--text);font-style:normal">quality</em>. The thing that determines whether your organisation can actually do what it says it can do.
+      </p>
+      <div class="word-kinship">
+        <div class="kinship-label">The -acity family</div>
+        <div class="kinship-words">
+          <div class="kinship-pill">tenacity <span>persistence</span></div>
+          <div class="kinship-pill">audacity <span>boldness</span></div>
+          <div class="kinship-pill">veracity <span>truth</span></div>
+          <div class="kinship-pill">vivacity <span>liveliness</span></div>
+          <div class="kinship-pill">capacity <span>ability</span></div>
+          <div class="kinship-pill" style="border-color:rgba(99,102,241,.35);color:var(--text)">humacity <span>human quality</span></div>
+        </div>
       </div>
     </div>
-    <div class="clarity-card is-no">
-      <div class="clarity-marker">&#x2715; &nbsp; Humacity is not</div>
-      <div class="clarity-list">
-        <div class="clarity-item"><div class="clarity-item-dot"></div>A score or a rating</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>A metric to be optimised</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>A tool, a framework, or a dashboard</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>A replacement for HR metrics, engagement scores, or people analytics — it sits above them as the frame within which those metrics gain meaning</div>
-        <div class="clarity-item"><div class="clarity-item-dot"></div>Soft, intangible, or unmeasurable — that framing is what has kept HR out of the boardroom. Humacity is quantifiable. The Humac Score is the proof</div>
+
+    <div>
+      <div class="usage-block">
+        <div class="usage-context">In the boardroom</div>
+        <div class="usage-text">"The <em>Humacity</em> of this organisation is declining. Three of our five vital signs are critical and our best talent is concentrated in two people who are at flight risk."</div>
+      </div>
+      <div class="usage-block">
+        <div class="usage-context">In a performance review</div>
+        <div class="usage-text">"We have improved our <em>Humacity</em> position this quarter — talent concentration risk is down, the skill debt provision has reduced, and our Net Human Worth has increased by 18%."</div>
+      </div>
+      <div class="usage-block">
+        <div class="usage-context">In a CFO conversation</div>
+        <div class="usage-text">"Our <em>Humacity</em> is strong. For every rupee invested in our people, this organisation returns 3.8x. Here is the statement."</div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="divider"></div>
 
-<!-- WHY NOW -->
-<div class="section">
-  <div class="section-eyebrow">Why Now</div>
+<section class="section">
+  <div class="section-label">Clarity</div>
+  <h2 class="section-title">What Humacity is.<br>What it is not.</h2>
+  <p class="section-sub">Precision matters in language. These distinctions determine whether the concept holds up in a boardroom.</p>
+
+  <div class="not-grid">
+    <div class="not-card is">
+      <div class="not-label">&#10003;&nbsp; Humacity is</div>
+      <div class="not-text">The philosophical meta-layer that runs through every people decision. The language that connects HR to finance. A state of being that can improve, deteriorate, be built, and be lost.</div>
+    </div>
+    <div class="not-card is-not">
+      <div class="not-label">&#10005;&nbsp; Humacity is not</div>
+      <div class="not-text">A score. A rating. A metric to be optimised. A tool. A framework. A dashboard. Any of those things would reduce it to something HR already has too many of.</div>
+    </div>
+    <div class="not-card is">
+      <div class="not-label">&#10003;&nbsp; Humacity applies to</div>
+      <div class="not-text">Every organisation that employs people. A five-person startup and a 50,000-person enterprise both have a Humacity position. It is always either improving or deteriorating — never static.</div>
+    </div>
+    <div class="not-card is-not">
+      <div class="not-label">&#10005;&nbsp; Humacity does not replace</div>
+      <div class="not-text">HR metrics, engagement scores, or people analytics. It sits above them — the frame within which those metrics gain meaning. The language, not the data.</div>
+    </div>
+    <div class="not-card is">
+      <div class="not-label">&#10003;&nbsp; Humacity belongs in</div>
+      <div class="not-text">The same conversation as liquidity, solvency, and market position. It is a quality of organisational health — the human dimension of what the balance sheet cannot capture.</div>
+    </div>
+    <div class="not-card is-not">
+      <div class="not-label">&#10005;&nbsp; Humacity is never</div>
+      <div class="not-text">Soft. Intangible. Unmeasurable. That framing is what has kept HR out of the boardroom for decades. Humacity is quantifiable. The Humac Score is the proof.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section" id="why-now">
+  <div class="section-label">Why Now</div>
   <h2 class="section-title">The problem has always existed.<br>The language arrives in 2026.</h2>
   <p class="section-sub">Three forces converged to make this concept both possible and necessary right now.</p>
 
-  <div class="why-grid">
-    <div class="why-card">
+  <div class="why-blocks">
+    <div class="why-block">
       <div class="why-num">01</div>
       <div class="why-title">The CFO has taken over the room</div>
-      <div class="why-body">In the post-2020 era, every business decision is a financial decision. HR presenting in HR language to a finance-led leadership team is not a communication problem. It is a language problem. Humacity is the translation.</div>
+      <div class="why-text">In the post-2020 era, every business decision is a financial decision. HR presenting in HR language to a finance-led leadership team is not a communication problem. It is a language problem. Humacity is the translation.</div>
     </div>
-    <div class="why-card">
+    <div class="why-block">
       <div class="why-num">02</div>
       <div class="why-title">The data exists. The format does not.</div>
-      <div class="why-body">Every HRIS holds enough data to compute a Human P&L, a balance sheet, a return ratio. The data has always been there. What has been missing is the accounting structure that makes HR data legible to finance. Humacity names what that structure is trying to capture.</div>
+      <div class="why-text">Every HRIS holds enough data to compute a Human P&amp;L, a balance sheet, a return ratio. The data has always been there. What has been missing is the accounting structure that makes HR data legible to finance. Humacity names what that structure is trying to capture.</div>
     </div>
-    <div class="why-card">
+    <div class="why-block">
       <div class="why-num">03</div>
       <div class="why-title">HR's credibility moment is now</div>
-      <div class="why-body">Every function is being asked to justify its cost. The organisations that survive this scrutiny will be the ones where HR can answer the CFO's question in the CFO's language. Humacity gives HR that language — and Vantage gives it the tools.</div>
+      <div class="why-text">Every function is being asked to justify its cost. The organisations that survive this scrutiny will be the ones where HR can answer the CFO's question in the CFO's language. Humacity gives HR that language.</div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="divider"></div>
 
-<!-- FIVE PILLARS → HUMAC SCORE -->
-<div class="section">
-  <div class="section-eyebrow">The Five Pillars</div>
-  <h2 class="section-title">Humacity measured.<br>Five pillars. One score.</h2>
+<section class="section" id="the-five">
+  <div class="section-label">The Five Pillars</div>
+  <h2 class="section-title">Humacity is measured through<br>five pillars. One Humac Score.</h2>
+  <p class="section-sub">Not conceptual pillars to be admired — forces. Each one is either strengthening or weakening your organisation's Humacity position right now. Together, they compute a single weighted output.</p>
 
-  <p class="pillars-intro">These are not pillars to be admired — they are <strong>forces</strong>. Each one is either strengthening or weakening your organisation's Humacity position right now. Together, they compute your Humac Score.</p>
+  <div class="pillars">
 
-  <div class="pillar-stack">
-    <div class="pillar-row">
-      <div class="pillar-label">L1</div>
-      <div></div>
-      <div class="pillar-body">
+    <div class="pillar-item">
+      <div class="pillar-code">L1</div>
+      <div>
         <div class="pillar-name">Value Ledger</div>
-        <div class="pillar-desc">How much financial value does HR generate relative to total salaries paid? Return per rupee of people investment — the fundamental Humacity question.</div>
+        <div class="pillar-text">
+          How much financial value does HR generate relative to total salaries paid? This is the fundamental Humacity question — not headcount, not cost, but <em>return</em>. For every rupee invested in people, what does the organisation actually get back? The Value Ledger computes that ratio and puts it on a statement.
+        </div>
       </div>
       <div class="pillar-weight">25%</div>
     </div>
-    <div class="pillar-row">
-      <div class="pillar-label">L2</div>
-      <div></div>
-      <div class="pillar-body">
+
+    <div class="pillar-item">
+      <div class="pillar-code">L2</div>
+      <div>
         <div class="pillar-name">Talent Premium</div>
-        <div class="pillar-desc">Are people generating above-average returns relative to what they cost? Not about having expensive people — about whether the people you have generate a premium above what their cost would typically produce.</div>
+        <div class="pillar-text">
+          At any given cost, are the people in this organisation generating above-average returns? Humacity is not about having expensive people — it is about having people whose performance generates a <em>premium above what that cost would typically produce</em>. This is talent quality in financial language.
+        </div>
       </div>
       <div class="pillar-weight">15%</div>
     </div>
-    <div class="pillar-row" style="border-color: rgba(99,102,241,.3);">
-      <div class="pillar-label">L3</div>
-      <div></div>
-      <div class="pillar-body">
+
+    <div class="pillar-item" style="border-color:rgba(99,102,241,.14)">
+      <div class="pillar-code">L3</div>
+      <div>
         <div class="pillar-name">Org Vitals</div>
-        <div class="pillar-desc">Leading indicators of organisational health across 25 signals in 6 categories: Leadership Pulse, Fear Index, Middle Layer Health, Execution Fidelity, HR Mirror, and Peer &amp; Recognition Culture. The largest pillar — because culture is where Humacity lives.</div>
+        <div class="pillar-text">
+          <span class="italic-line">An organisation is not a machine. It is a living organism. It breathes through its people, circulates energy through its managers, and either grows or decays depending on the health of its internal environment.</span>
+          Leading indicators of organisational health across 25 signals in 6 categories: <em>Leadership Pulse, Fear Index, Middle Layer Health, Execution Fidelity, HR Mirror, and Peer &amp; Recognition Culture</em>. The largest pillar — because culture is where Humacity lives or dies.
+        </div>
       </div>
       <div class="pillar-weight">30%</div>
     </div>
-    <div class="pillar-row">
-      <div class="pillar-label">L4</div>
-      <div></div>
-      <div class="pillar-body">
+
+    <div class="pillar-item">
+      <div class="pillar-code">L4</div>
+      <div>
         <div class="pillar-name">Human P&amp;L</div>
-        <div class="pillar-desc">For every rupee spent running HR, how much comes back? HR has a revenue line and a cost line. The spread between them — the Human Gross Margin — is Humacity expressed as profit.</div>
+        <div class="pillar-text">
+          For every rupee spent running HR, how much comes back? Every people investment has a revenue line and a cost line. The spread between them — the <em>Human Gross Margin</em> — is Humacity expressed as profit. An organisation with strong Humacity sees this margin grow. One with deteriorating Humacity watches it compress.
+        </div>
       </div>
       <div class="pillar-weight">20%</div>
     </div>
-    <div class="pillar-row">
-      <div class="pillar-label">L5</div>
-      <div></div>
-      <div class="pillar-body">
+
+    <div class="pillar-item">
+      <div class="pillar-code">L5</div>
+      <div>
         <div class="pillar-name">Human Balance Sheet</div>
-        <div class="pillar-desc">What is the net human capital position — assets vs. liabilities? Five human assets (talent equity, institutional knowledge, learning velocity, relationship capital, culture asset) against five human liabilities (flight risk, skill debt, growth readiness gap, culture liability, workforce obsolescence risk).</div>
+        <div class="pillar-text">
+          What is the net human capital position — assets versus liabilities? Five human assets (talent equity, institutional knowledge, learning velocity, relationship capital, culture asset) against five human liabilities (flight risk, skill debt, growth readiness gap, culture liability, workforce obsolescence risk). <em>Net Human Worth is Humacity expressed on a balance sheet.</em>
+        </div>
       </div>
       <div class="pillar-weight">10%</div>
     </div>
+
   </div>
 
-  <!-- HCI -->
-  <div class="hci-note">
-    <div class="hci-badge">HCI</div>
-    <div class="hci-text"><strong>Human Confidence Index</strong> — A context adjustment layer that factors in external conditions affecting your sector, the labour market, and macroeconomic signals. The HCI adjusts the raw L1–L5 weighted score to reflect what the environment makes possible — not just what the organisation chooses. It sits primarily within L3 Org Vitals and carries forward into the final Humac Score.</div>
-  </div>
-
-  <!-- SCORE BANDS -->
-  <div class="section-eyebrow" style="margin-top:40px">The Output</div>
-  <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.01em">Five pillars. One number. Five positions.</h3>
-  <p style="font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:24px;max-width:580px">The weighted combination of L1–L5, adjusted by the HCI, produces your Humac Score. A number between 0 and 100 that tells you — and the room — where your organisation's Humacity stands today.</p>
-
-  <div class="bands-grid">
-    <div class="band-card">
-      <div class="band-range">0–30</div>
-      <div class="band-name">Value Destruction</div>
-      <div class="band-desc">People cost more than they return. Immediate intervention required.</div>
+  <!-- HUMAC SCORE CALLOUT -->
+  <div class="score-callout">
+    <div class="sc-left">
+      <div class="sc-label">The output</div>
+      <div class="sc-title">Five pillars. One weighted number. Five positions.</div>
+      <div class="sc-sub">L1–L5, adjusted by the Human Confidence Index (HCI), produce a single score between 0 and 100. That number places every organisation on the Humac Spectrum — from Value Destruction to Value Exceptional.</div>
     </div>
-    <div class="band-card">
-      <div class="band-range">31–50</div>
-      <div class="band-name">Value Neutral</div>
-      <div class="band-desc">Breaking even on people investment. High deterioration risk without action.</div>
-    </div>
-    <div class="band-card" style="border-color:rgba(99,102,241,.28)">
-      <div class="band-range" style="color:#a5b4fc">51–70</div>
-      <div class="band-name">Value Generating</div>
-      <div class="band-desc">Positive returns. Significant value still left on the table.</div>
-    </div>
-    <div class="band-card" style="border-color:rgba(99,102,241,.35)">
-      <div class="band-range" style="color:#a5b4fc">71–85</div>
-      <div class="band-name">Value Compounding</div>
-      <div class="band-desc">Systematic value creation. Strong leading indicators.</div>
-    </div>
-    <div class="band-card" style="border-color:rgba(99,102,241,.45);background:linear-gradient(135deg,rgba(99,102,241,.1),rgba(99,102,241,.05))">
-      <div class="band-range" style="color:#c4b5fd">86–100</div>
-      <div class="band-name">Value Exceptional</div>
-      <div class="band-desc">Top-tier. People treated as a compounding asset class.</div>
+    <div class="sc-bands">
+      <div class="sc-band">0–30<br>Value Destruction</div>
+      <div class="sc-band">31–50<br>Value Neutral</div>
+      <div class="sc-band">51–70<br>Value Generating</div>
+      <div class="sc-band">71–85<br>Value Compounding</div>
+      <div class="sc-band">86–100<br>Value Exceptional</div>
     </div>
   </div>
-</div>
+
+</section>
 
 <div class="divider"></div>
 
-<!-- MANIFESTO -->
-<div class="manifesto">
+<section class="manifesto" id="manifesto">
   <div class="manifesto-inner">
-    <div class="manifesto-eyebrow">The argument</div>
-    <div class="manifesto-lines">
-      <span class="fade">Human capital has always been measurable.</span><br>
-      <span>Nobody gave it a language.</span><br><br>
-      <span class="fade">Finance has a balance sheet.<br>Sales has a pipeline.<br>HR has had a headcount.</span><br><br>
-      <span>Not because the numbers do not exist.</span><br>
-      <span class="accent">Because nobody formatted them correctly.</span><br><br>
-      <span style="color:rgba(244,243,255,.45);font-size:85%">Until now.</span>
+    <div class="section-label" style="justify-content:center;margin-bottom:48px">The Humacity Manifesto</div>
+    <div class="manifesto-lines" id="manifestoLines">
+      <div class="m-line">Human capital has always been measurable.</div>
+      <div class="m-line">Nobody gave it a <span class="gold">language</span>.</div>
+      <div class="m-line">&nbsp;</div>
+      <div class="m-line">Finance has a balance sheet.</div>
+      <div class="m-line">Sales has a pipeline.</div>
+      <div class="m-line">HR has had a <span class="mag">headcount</span>.</div>
+      <div class="m-line">&nbsp;</div>
+      <div class="m-line">Not because the numbers don't exist.</div>
+      <div class="m-line">Because nobody formatted them correctly.</div>
+      <div class="m-line">&nbsp;</div>
+      <div class="m-line">The Humacity of your organisation</div>
+      <div class="m-line">is improving or deteriorating</div>
+      <div class="m-line">right now.</div>
+      <div class="m-line">&nbsp;</div>
+      <div class="m-line">You just haven't been</div>
+      <div class="m-line">able to say so</div>
+      <div class="m-line">in a language the <span class="gold">board understands</span>.</div>
+      <div class="m-line">&nbsp;</div>
+      <div class="m-line">Until now.</div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- CTA -->
-<div class="cta-section">
-  <div class="cta-block">
-    <div class="cta-eyebrow">Your Humacity Position</div>
-    <h3 class="cta-title">Compute your Humac Score.</h3>
-    <p class="cta-sub">Five pillars. Eighteen questions. One number that tells you — and the room — exactly where your organisation's Humacity stands today.</p>
-    <div class="cta-btns">
-      <a href="humac-onboarding.html" class="btn-primary">Generate your Humac Score →</a>
-      <a href="dashboard.html" class="btn-outline">Back to Dashboard</a>
-    </div>
+<section class="rf-cta">
+  <div class="rf-cta-inner">
+    <div class="rf-cta-eyebrow">Built on Humacity</div>
+    <h2 class="rf-cta-title">One philosophy.<br>The entire Virorah universe.</h2>
+    <p class="rf-cta-sub">Humacity is the intellectual foundation that every Virorah product is built on. The five pillars run through every tool, every output, every recommendation the platform makes. The Humac Score is how it becomes operational.</p>
   </div>
-</div>
+</section>
 
-<footer class="h-footer">
-  <div class="h-footer-left">Humacity · A concept by Kumar Vivek · Virorah Private Limited</div>
-  <div class="h-footer-right">The intellectual foundation of Vantage · 2026</div>
+<footer class="footer">
+  <div class="footer-left">Humacity &middot; A concept by <b>Kumar Vivek</b> &middot; humacity.com</div>
+  <div class="footer-right">The philosophy behind Virorah &nbsp;&middot;&nbsp; <a href="https://virorah.com" style="color:rgba(99,102,241,.45);text-decoration:none">virorah.com</a></div>
 </footer>
 
-</body>
-</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ── AMBIENT CANVAS ───────────────────────────────────────────────────────────
+(function(){
+  var canvas=document.getElementById('ambientCanvas');
+  var ctx=canvas.getContext('2d');
+  var W,H,particles=[],blobs=[];
+  var mouse={x:-9999,y:-9999};
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY;});
+  for(var i=0;i<5;i++){blobs.push({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.0003,vy:(Math.random()-.5)*.0002,r:200+Math.random()*300,hue:i%2===0?'192,64,154':'240,234,228',phase:Math.random()*Math.PI*2});}
+  for(var i=0;i<120;i++){particles.push({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.00015,vy:(Math.random()-.5)*.00015,size:Math.random()*1.5+.3,alpha:Math.random()*.4+.1,phase:Math.random()*Math.PI*2,speed:.005+Math.random()*.01});}
+  var t=0;
+  function draw(){
+    ctx.clearRect(0,0,W,H);t+=.008;
+    blobs.forEach(function(b){
+      b.x+=b.vx+Math.sin(t*.3+b.phase)*.0001;b.y+=b.vy+Math.cos(t*.2+b.phase)*.0001;
+      if(b.x<-.3)b.x=1.3;if(b.x>1.3)b.x=-.3;if(b.y<-.3)b.y=1.3;if(b.y>1.3)b.y=-.3;
+      var gx=b.x*W,gy=b.y*H,pulse=1+Math.sin(t*.5+b.phase)*.15;
+      var grad=ctx.createRadialGradient(gx,gy,0,gx,gy,b.r*pulse);
+      grad.addColorStop(0,'rgba('+b.hue+',.04)');grad.addColorStop(.5,'rgba('+b.hue+',.015)');grad.addColorStop(1,'rgba('+b.hue+',0)');
+      ctx.fillStyle=grad;ctx.beginPath();ctx.arc(gx,gy,b.r*pulse,0,Math.PI*2);ctx.fill();
+    });
+    particles.forEach(function(p){
+      p.x+=p.vx+Math.sin(t*p.speed+p.phase)*.00008;p.y+=p.vy+Math.cos(t*p.speed+p.phase)*.00006;
+      if(p.x<0)p.x=1;if(p.x>1)p.x=0;if(p.y<0)p.y=1;if(p.y>1)p.y=0;
+      var px=p.x*W,py=p.y*H,twinkle=p.alpha*(0.6+Math.sin(t*2+p.phase)*.4);
+      var dx=px-mouse.x,dy=py-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120)twinkle=Math.min(1,twinkle+(1-dist/120)*.5);
+      ctx.beginPath();ctx.arc(px,py,p.size,0,Math.PI*2);ctx.fillStyle='rgba(99,102,241,'+twinkle+')';ctx.fill();
+    });
+    for(var i=0;i<particles.length;i++){for(var j=i+1;j<particles.length;j++){var dx=(particles[i].x-particles[j].x)*W,dy=(particles[i].y-particles[j].y)*H,d=Math.sqrt(dx*dx+dy*dy);if(d<80){ctx.beginPath();ctx.moveTo(particles[i].x*W,particles[i].y*H);ctx.lineTo(particles[j].x*W,particles[j].y*H);ctx.strokeStyle='rgba(99,102,241,'+(0.06*(1-d/80))+')';ctx.lineWidth=.5;ctx.stroke();}}}
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ── THREE.JS ORB ─────────────────────────────────────────────────────────────
+(function(){
+  var canvas=document.getElementById('orbCanvas');
+  function getSize(){return Math.min(700,window.innerWidth*.9);}
+  var sz=getSize();canvas.width=sz;canvas.height=sz;
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(55,1,0.1,100);camera.position.set(0,0,3.4);
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+  renderer.setSize(sz,sz);renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setClearColor(0x000000,0);
+  var core=new THREE.Mesh(new THREE.SphereGeometry(.85,80,80),new THREE.MeshStandardMaterial({color:0x0d0b1e,roughness:.2,metalness:.9,emissive:0x1e1b4b,emissiveIntensity:.5}));scene.add(core);
+  scene.add(new THREE.Mesh(new THREE.SphereGeometry(.9,32,32),new THREE.MeshBasicMaterial({color:0x6366f1,transparent:true,opacity:.06,side:THREE.BackSide})));
+  var wire=new THREE.Mesh(new THREE.SphereGeometry(.87,24,24),new THREE.MeshBasicMaterial({color:0x7c3aed,wireframe:true,transparent:true,opacity:.09}));scene.add(wire);
+  function makeRing(r,tube,color,opacity,rx,ry,rz){var m=new THREE.Mesh(new THREE.TorusGeometry(r,tube,8,160),new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:opacity}));m.rotation.set(rx,ry,rz);scene.add(m);return m;}
+  var ring1=makeRing(1.2,.005,0x6366f1,.5,Math.PI*.28,0,0);
+  var ring2=makeRing(1.38,.003,0xa5b4fc,.25,Math.PI*.5,0,Math.PI*.2);
+  var ring3=makeRing(1.55,.002,0x7c3aed,.15,Math.PI*.15,Math.PI*.1,0);
+  var ring4=makeRing(1.0,.004,0xa5b4fc,.3,Math.PI*.7,0,Math.PI*.4);
+  function makeParticles(count,minR,maxR,color,size){var pos=new Float32Array(count*3);for(var i=0;i<count;i++){var phi=Math.acos(-1+(2*i)/count),theta=Math.sqrt(count*Math.PI)*phi+(Math.random()-.5)*.8,r=minR+Math.random()*(maxR-minR);pos[i*3]=r*Math.sin(phi)*Math.cos(theta);pos[i*3+1]=r*Math.sin(phi)*Math.sin(theta);pos[i*3+2]=r*Math.cos(phi);}var geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));var pts=new THREE.Points(geo,new THREE.PointsMaterial({color:color,size:size,transparent:true,opacity:.7,sizeAttenuation:true}));scene.add(pts);return pts;}
+  var cloud1=makeParticles(600,1.1,1.9,0x7c3aed,.022);
+  var cloud2=makeParticles(200,.92,1.05,0xa5b4fc,.035);
+  var cloud3=makeParticles(80,2.0,2.8,0x6366f1,.015);
+  scene.add(new THREE.AmbientLight(0x050410,4));
+  var mLight=new THREE.PointLight(0x6366f1,4,10);mLight.position.set(2.5,2,2);scene.add(mLight);
+  var gLight=new THREE.PointLight(0xa5b4fc,2,10);gLight.position.set(-2,-1.5,1.5);scene.add(gLight);
+  var bLight=new THREE.PointLight(0x4f46e5,1.5,8);bLight.position.set(0,-2.5,-1);scene.add(bLight);
+  var fLight=new THREE.PointLight(0xc4b5fd,1.2,6);fLight.position.set(-1.5,1.5,2);scene.add(fLight);
+  var mouseX=0,mouseY=0;
+  document.addEventListener('mousemove',function(e){mouseX=(e.clientX/window.innerWidth-.5)*1.2;mouseY=(e.clientY/window.innerHeight-.5)*1.2;});
+  var t=0;
+  function animate(){
+    requestAnimationFrame(animate);t+=.004;
+    core.rotation.y=t*.25;core.rotation.x=Math.sin(t*.15)*.08;
+    wire.rotation.y=t*.4;wire.rotation.x=-t*.15;
+    ring1.rotation.z=t*.35;ring2.rotation.y=t*.28;ring2.rotation.x+=.002;
+    ring3.rotation.z=-t*.2;ring3.rotation.y=t*.15;ring4.rotation.x=t*.3;ring4.rotation.z=-t*.18;
+    cloud1.rotation.y=t*.12;cloud1.rotation.x=Math.sin(t*.08)*.04;
+    cloud2.rotation.y=-t*.18;cloud2.rotation.z=t*.06;cloud3.rotation.y=t*.06;
+    var breath=1+Math.sin(t*.7)*.018;core.scale.setScalar(breath);wire.scale.setScalar(breath*1.01);
+    scene.rotation.x+=(mouseY*.6-scene.rotation.x)*.03;scene.rotation.y+=(mouseX*.6-scene.rotation.y)*.03;
+    mLight.intensity=3.5+Math.sin(t*1.1)*.8;gLight.intensity=1.8+Math.cos(t*.9)*.5;
+    renderer.render(scene,camera);
+  }
+  animate();
+  window.addEventListener('resize',function(){var s=getSize();canvas.style.width=s+'px';canvas.style.height=s+'px';renderer.setSize(s,s);});
+})();
+
+// ── STARFIELD — Humacity + Humac Score symbols ───────────────────────────────
+(function(){
+  var canvas = document.getElementById('starfieldCanvas');
+  var W, H;
+  var scene, camera, renderer;
+  var mouse = {x: 0, y: 0};
+  var PARTICLE_COUNT = 500;
+  var sprites = [];
+
+  var SYMBOLS = [
+    'L1','L2','L3','L4','L5',
+    'HCI','NHW','TQP',
+    'HUMACITY','Humacity',
+    'Humac Score',
+    'tenacity','audacity','veracity','vivacity','capacity',
+    '3.8x','2.4x','1.0x','4.1x',
+    '₹','$','£','€','¥',
+    'P&L','ROI',
+    '+18%','+12%','+24%',
+    'Value Ledger',
+    'Talent Premium',
+    'Org Vitals',
+    'Human P&L',
+    'Net Human Worth',
+    'L1 · Value Ledger',
+    'L2 · Talent Premium',
+    'L3 · Org Vitals',
+    'L4 · Human P&L',
+    'L5 · Balance Sheet',
+    'Fear Index',
+    'Leadership Pulse',
+    'Middle Layer',
+    'Execution Fidelity',
+    'Value Destruction',
+    'Value Neutral',
+    'Value Generating',
+    'Value Compounding',
+    'Value Exceptional',
+    '0–30','31–50','51–70','71–85','86–100',
+    'Skill Debt',
+    'Flight Risk',
+    'Culture Asset',
+    'Talent Equity',
+  ];
+
+  var COLORS = [
+    '#6366f1','#a5b4fc','#c4b5fd',
+    '#6366f1','#a5b4fc','#6366f1',
+    '#f4f3ff','rgba(244,243,255,0.45)',
+  ];
+
+  function makeSpriteTex(text, color){
+    var c = document.createElement('canvas');
+    var ctx = c.getContext('2d');
+    var fontSize = text.length > 8 ? 13 : text.length > 4 ? 16 : 20;
+    ctx.font = '600 ' + fontSize + 'px "JetBrains Mono", "DM Mono", monospace';
+    var tw = ctx.measureText(text).width;
+    c.width  = Math.ceil(tw) + 16;
+    c.height = fontSize + 12;
+    ctx.font = '600 ' + fontSize + 'px "JetBrains Mono", "DM Mono", monospace';
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.shadowBlur  = 0;
+    ctx.fillStyle   = color;
+    ctx.globalAlpha = 1.0;
+    ctx.fillText(text, 8, fontSize + 2);
+    var tex = new THREE.CanvasTexture(c);
+    return {tex: tex, aspect: c.width / c.height};
+  }
+
+  function makeSprite(tex, aspect){
+    var mat = new THREE.SpriteMaterial({
+      map: tex, transparent: true, opacity: 0,
+      depthWrite: false, blending: THREE.AdditiveBlending,
+    });
+    var sp = new THREE.Sprite(mat);
+    var baseSize = 0.5 + Math.random() * 0.9;
+    sp.scale.set(baseSize * aspect * 10, baseSize * 10, 1);
+    return sp;
+  }
+
+  function resetSprite(data, randomZ){
+    var spread = 800;
+    data.sprite.position.x = (Math.random() - 0.5) * spread;
+    data.sprite.position.y = (Math.random() - 0.5) * spread;
+    data.sprite.position.z = randomZ ? -900 + Math.random() * 700 : -1000 + Math.random() * 100;
+    data.speed   = 0.3 + Math.random() * 0.7;
+    data.maxOpacity = 0.70 + Math.random() * 0.30;
+    data.sprite.material.opacity = 0;
+    data.fadeIn  = true;
+  }
+
+  function init(){
+    var hero = document.querySelector('.hero');
+    W = hero ? hero.offsetWidth : window.innerWidth;
+    H = hero ? hero.offsetHeight : window.innerHeight;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(70, W/H, 0.1, 2000);
+    camera.position.z = 500;
+    renderer = new THREE.WebGLRenderer({canvas: canvas, antialias: true, alpha: true});
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setClearColor(0x000000, 0);
+    var texCache = {};
+    SYMBOLS.forEach(function(sym){
+      var col = COLORS[Math.floor(Math.random() * COLORS.length)];
+      texCache[sym] = makeSpriteTex(sym, col);
+    });
+    for(var i = 0; i < PARTICLE_COUNT; i++){
+      var sym = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+      var tc  = texCache[sym];
+      var sp  = makeSprite(tc.tex, tc.aspect);
+      scene.add(sp);
+      var data = {sprite: sp, speed: 0, maxOpacity: 0, fadeIn: true};
+      resetSprite(data, true);
+      sprites.push(data);
+    }
+  }
+
+  function animate(){
+    requestAnimationFrame(animate);
+    var camZ = 500;
+    sprites.forEach(function(data){
+      var sp = data.sprite;
+      sp.position.z += data.speed;
+      sp.position.x += mouse.x * 0.06;
+      sp.position.y -= mouse.y * 0.06;
+      var progress = (sp.position.z + 900) / 1400;
+      if(data.fadeIn && progress < 0.6){
+        sp.material.opacity = Math.min(data.maxOpacity, progress * data.maxOpacity * 4.0);
+      }
+      if(sp.position.z > 420){ sp.material.opacity *= 0.88; }
+      if(sp.position.z > camZ + 50){ resetSprite(data, false); }
+    });
+    renderer.render(scene, camera);
+  }
+
+  document.addEventListener('mousemove', function(e){
+    mouse.x = (e.clientX / window.innerWidth  - 0.5) * 2;
+    mouse.y = (e.clientY / window.innerHeight - 0.5) * 2;
+  });
+  window.addEventListener('resize', function(){
+    var hero = document.querySelector('.hero');
+    W = hero ? hero.offsetWidth : window.innerWidth;
+    H = hero ? hero.offsetHeight : window.innerHeight;
+    camera.aspect = W/H; camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  });
+
+  init();
+  animate();
+})();
+
+// ── MANIFESTO SCROLL LIT ─────────────────────────────────────────────────────
+(function(){
+  var lines=document.querySelectorAll('.m-line');
+  function checkLines(){lines.forEach(function(line){var rect=line.getBoundingClientRect();if(rect.top<window.innerHeight*.75&&rect.bottom>0)line.classList.add('lit');});}
+  window.addEventListener('scroll',checkLines);checkLines();
+})();
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js').catch(function(){});
+  });
+}
+</script>
+</body></html>
