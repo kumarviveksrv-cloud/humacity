@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Method note · Humac Score v0.9</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+body{margin:0;background:#050410;color:#f4f3ff;font-family:Sora,sans-serif;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+a{color:#a5b4fc}
+.eyebrow{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#a5b4fc}
+h1{font-size:2rem;letter-spacing:-.03em;margin:12px 0}
+p,li{color:rgba(244,243,255,.78)}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:18px 0 28px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid rgba(99,102,241,.2);vertical-align:top}
+th{font-family:"DM Mono",monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#a5b4fc}
+.note{border-left:3px solid #6366f1;padding:8px 14px;margin:18px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="eyebrow">Virorah · Humacity · 5 Oct 2026</div>
+<h1>Method note. Humac Score v0.9.</h1>
+<p>Humacity is the point of view: people decisions should be readable in money, and missing data should stay missing. The Humac Score is the provisional planning index built on that point of view. Version 0.9. It is not a completed measure of human capital.</p>
+<div class="note">Board line: for every ₹100 of salary, the planning model puts HR return at ₹X under the base case. The range is ₹Y to ₹Z. Pillars with missing inputs are excluded. The 0–100 scale is provisional.</div>
+<h2>What the user enters</h2>
+<p>Headcount, compensation base, cohort counts, hire and promotion counts, and yes or no signals for organisation health. Nothing is inferred from a famous company or a public filing.</p>
+<h2>What is calculated</h2>
+<p>L1 prices five cohort lines once. L4 divides that book by HR investment. L5 prices only senior count, senior tenure, revenue-employee relationships, and HiPo concentration. L2 averages measured sub-metrics. L3 counts answered signals. The total renormalises across pillars that have enough data.</p>
+<h2>What is an assumption</h2>
+<table>
+<tr><th>Line</th><th>Base</th><th>Status</th></tr>
+<tr><td>Replacement-cost multiple</td><td>1.8×</td><td>Planning range 1.2–2.5. Not a measured return.</td></tr>
+<tr><td>Revenue-hire multiple</td><td>1.4×</td><td>Planning range 1.0–1.8.</td></tr>
+<tr><td>Development return</td><td>2.8×</td><td>Planning range 1.5–4.0.</td></tr>
+<tr><td>Tenure premium</td><td>8%</td><td>Planning range 3–12%.</td></tr>
+<tr><td>Risk contained</td><td>60%</td><td>Planning range 30–80%.</td></tr>
+<tr><td>L1 / L4 / L5 score bounds</td><td>fixed min and max</td><td>Placeholder calibration. Recalibrate after 30 computed organisations.</td></tr>
+<tr><td>Pillar weights</td><td>25 / 15 / 30 / 20 / 10</td><td>Design choice. Not derived from McKinsey or Gallup.</td></tr>
+</table>
+<h2>What is excluded</h2>
+<p>A missing denominator is not scored as 50. L2 needs 3 of 5 sub-metrics. L3 needs 15 of 25 signals and 3 in each vital. L4 does not run without the L1 book. Stars, emerging talent, tenure, and at-risk people are not priced again in L4 or L5.</p>
+<h2>What would prove a multiple wrong</h2>
+<p>If regretted attrition, replacement cost, or quality incidents do not move with the ledger over 90 days, the multiple is wrong. The cases on the spectrum and inflection pages are illustrations from the public record. They are not Humac Scores.</p>
+<p><a href="index.html">Back to Humacity</a> · <a href="humacity-evidence.html">Evidence</a> · <a href="humacity-spectrum.html">Spectrum</a></p>
+</div>
+</body>
+</html>
